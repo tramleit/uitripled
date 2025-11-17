@@ -126,7 +126,7 @@ export function AnimatedProfileMenu() {
                       className="group relative block w-full overflow-hidden rounded-2xl border border-border/40 bg-background/60 text-left shadow-[0_24px_80px_-32px_rgba(15,23,42,0.45)] backdrop-blur px-4 py-4 transition-all hover:border-border/60 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                       aria-label={`${item.title}: ${item.description}`}
                     >
-                      <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                      <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10" />
 
                       <div className="relative flex min-w-[240px] items-center gap-4">
                         <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-border/30 bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary/20 group-hover:text-primary/90">

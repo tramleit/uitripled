@@ -133,7 +133,7 @@ export function CurrencyConverterCard() {
       transition={{ duration: 0.4, ease: "easeOut" }}
       className="group mx-auto w-full relative"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100  rounded-2xl" />
+      <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10  rounded-2xl" />
       <div className="relative overflow-hidden border border-border/60 bg-card/80 backdrop-blur  rounded-2xl">
         <div className="space-y-1 px-6 pt-6 pb-4">
           <h2 className="flex items-center gap-2 text-2xl font-semibold text-foreground">

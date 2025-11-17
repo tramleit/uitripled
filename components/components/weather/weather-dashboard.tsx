@@ -518,7 +518,7 @@ export function WeatherDashboard(): React.ReactElement {
             role="article"
             aria-label="Current weather conditions"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10" />
 
             <div className="relative flex flex-col gap-6">
               <div className="flex flex-col gap-3">
@@ -619,7 +619,7 @@ export function WeatherDashboard(): React.ReactElement {
             role="article"
             aria-label="Hourly forecast chart"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10" />
 
             <div className="relative flex flex-col gap-6">
               <div className="flex flex-wrap items-center justify-between gap-3">
@@ -765,7 +765,7 @@ export function WeatherDashboard(): React.ReactElement {
             role="article"
             aria-label="7 day extended forecast"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10" />
 
             <div className="relative flex flex-col gap-6">
               <div className="flex flex-wrap items-center justify-between gap-3">
@@ -847,7 +847,7 @@ export function WeatherDashboard(): React.ReactElement {
             role="article"
             aria-label="Air quality and weather alerts"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10" />
 
             <div className="relative flex flex-col gap-6">
               <div className="flex flex-wrap items-center justify-between gap-3">

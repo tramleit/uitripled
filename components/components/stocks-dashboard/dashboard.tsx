@@ -139,7 +139,7 @@ function MetricCard({ label, value, change, trend, icon }: MetricCardProps) {
       role="article"
       aria-label={`${label}: ${value}, ${change} ${trend === "up" ? "increase" : "decrease"}`}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10" />
 
       <div className="relative space-y-4">
         <div className="flex items-center justify-between">
@@ -189,7 +189,7 @@ function ChartCard({
       role="article"
       aria-label={`${title} chart: ${description}`}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10" />
 
       <div className="relative space-y-4">
         <div className="flex items-start justify-between">
@@ -292,7 +292,7 @@ function DetailedCard({ title, items }: DetailedCardProps) {
       role="article"
       aria-label={title}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10" />
 
       <div className="relative space-y-4">
         <h3 className="text-sm font-semibold uppercase tracking-[0.25em] text-foreground">

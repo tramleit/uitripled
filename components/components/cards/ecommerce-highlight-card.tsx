@@ -78,7 +78,7 @@ export function EcommerceHighlightCard() {
         <Card className="group relative overflow-hidden rounded-[28px] border border-border/40 bg-background text-foreground">
           <div
             aria-hidden="true"
-            className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10"
           />
 
           <CardHeader className="relative space-y-4 pb-0">

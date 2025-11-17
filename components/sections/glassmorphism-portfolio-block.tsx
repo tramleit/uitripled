@@ -158,7 +158,7 @@ export function GlassmorphismPortfolioBlock() {
                     whileHover={{ y: -4 }}
                     className="group relative overflow-hidden rounded-2xl border border-border/40 bg-background/60 p-5 backdrop-blur transition-all hover:border-border/60 hover:shadow-lg"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10" />
                     <div className="relative space-y-2">
                       <p className="text-xs font-semibold uppercase tracking-[0.25em] text-foreground/40">
                         {item.title}

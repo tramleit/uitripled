@@ -59,7 +59,7 @@ export function BottomModal() {
             >
               <div className="group relative overflow-hidden rounded-tl-2xl rounded-tr-2xl border border-border/40 bg-background/60 backdrop-blur shadow-lg">
                 {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10" />
 
                 {/* Header */}
                 <div className="relative flex items-center justify-between p-4 border-b border-border/40">

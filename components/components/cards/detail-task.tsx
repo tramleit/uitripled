@@ -168,7 +168,7 @@ export function DetailTaskCard() {
   return (
     <div className="">
       <Card className="group relative w-full overflow-hidden rounded-2xl border border-border/40 bg-background/60 text-foreground backdrop-blur transition-all hover:border-border/60 hover:shadow-lg">
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10" />
 
         <CardHeader className="relative gap-3 border-b border-border/40 bg-background/40 px-6 py-6">
           <Badge className="w-fit rounded-full bg-primary/15 px-3 py-1 text-[0.65rem] font-medium uppercase tracking-[0.25em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground">
