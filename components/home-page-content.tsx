@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { Suspense } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Star } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useEffect, useMemo, useState } from "react";
 import { EcommerceHighlightCard } from "@/components/components/cards/ecommerce-highlight-card";
 import { BrowseFolder } from "@/components/sections/browse-folder";
 import { ImageSliderCard } from "@/components/components/cards/image-slider-card";
@@ -20,14 +20,19 @@ import { MultipleAccounts } from "@/components/components/account-switcher/multi
 import { DetailTaskCard } from "@/components/components/cards/detail-task";
 import { AIChatInterface } from "@/components/components/chat/ai-chat-interface";
 import GradientOverlay from "@/components/gradiant-overlay";
+import { GithubStarButton } from "@/components/github-star-button";
+import { Star } from "lucide-react";
 
-// Update this with your actual GitHub repository
-const GITHUB_REPO = "moumen-soliman/uitripled"; // Format: "username/repo"
-// Update this with your current GitHub stars count
-const GITHUB_STAR_COUNT = 0;
+function StarButtonFallback() {
+  return (
+    <Button variant="outline" size="lg" className="min-w-[160px]" disabled>
+      <Star aria-hidden="true" className="mr-2 h-4 w-4" />
+      <span>...</span>
+    </Button>
+  );
+}
 
 export default function HomePageContent() {
-  const displayStarCount = GITHUB_STAR_COUNT.toLocaleString();
   return (
     <div className="min-h-screen bg-background">
       {/* Top centered actions */}
@@ -82,21 +87,9 @@ export default function HomePageContent() {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="min-w-[160px]"
-            >
-              <Link
-                href={`https://github.com/${GITHUB_REPO}`}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <Star aria-hidden="true" className="mr-2 h-4 w-4" />
-                <span>{displayStarCount}</span>
-              </Link>
-            </Button>
+            <Suspense fallback={<StarButtonFallback />}>
+              <GithubStarButton />
+            </Suspense>
           </motion.div>
         </div>
       </section>
