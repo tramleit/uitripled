@@ -147,7 +147,7 @@ export default function AnimationDetailPageClient({ code }: { code: string }) {
                   </motion.div>
                 </div>
 
-                {requiresShadcn && (
+                {/* {requiresShadcn && (
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -194,7 +194,7 @@ export default function AnimationDetailPageClient({ code }: { code: string }) {
                       </div>
                     </div>
                   </motion.div>
-                )}
+                )} */}
               </div>
 
               <div className="md:max-w-2xl">
