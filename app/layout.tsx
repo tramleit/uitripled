@@ -75,6 +75,14 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link
+          href="/rss.xml"
+          rel="alternate"
+          title="UITripleD Components and Blocks"
+          type="application/rss+xml"
+        />
+      </head>
       <body className={inter.className}>
         <Script id="theme-init" strategy="beforeInteractive">
           {themeInitScript}
