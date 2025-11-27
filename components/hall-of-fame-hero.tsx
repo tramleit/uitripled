@@ -91,7 +91,7 @@ export function HallOfFameHero() {
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
           className="mt-8"
         >
-          <div className="h-1 w-24 mx-auto bg-gradient-to-r from-transparent via-sidebar-primary to-transparent rounded-full opacity-50" />
+          <div className="h-1 w-24 mx-auto bg-gradient-to-r from-transparent via-primary to-transparent rounded-full opacity-50" />
         </motion.div>
       </div>
     </div>
