@@ -9,10 +9,11 @@ const TweetsLinks = [
   "https://x.com/define_app/status/1995066844311588922?s=20",
   "https://x.com/shadcn/status/1994849333259505943?s=20",
   "https://x.com/motiondotdev/status/1988225802744508750?s=20",
-  "https://x.com/gillarohith/status/1995534816029409714?s=20",
+  "https://x.com/masumparvej_/status/1987700594837205315?s=20",
   "https://x.com/rywalker/status/1995536406165471639?s=20",
   "https://x.com/DavidBensonX/status/1994338699429970153?s=20",
   "https://x.com/ajaypatel_aj/status/1994751849480790247?s=20",
+  "https://x.com/gillarohith/status/1995534816029409714?s=20",
 ];
 
 // List of verified users
@@ -20,6 +21,7 @@ const VERIFIED_USERS = [
   "rywalker",
   "ajaypatel_aj",
   "shadcn",
+  "masumparvej_",
   "orcdev",
   "motiondotdev",
   "gillarohith",
