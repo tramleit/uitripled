@@ -85,7 +85,7 @@ export function AnimatedProfileMenu() {
 
   return (
     <nav
-      className="fixed bottom-6 left-6 z-50"
+      className="fixed preview:absolute not-preview:bottom-6 not-preview:left-6 z-50"
       role="navigation"
       aria-label="Profile quick actions"
     >

@@ -39,7 +39,7 @@ export function MorphingActionButton({
 
   return (
     <div className="relative">
-      <div className="fixed bottom-8 right-8 z-50">
+      <div className="fixed preview:absolute bottom-8 right-8 preview:right-[85px] z-50">
         <LayoutGroup>
           <motion.div
             layout

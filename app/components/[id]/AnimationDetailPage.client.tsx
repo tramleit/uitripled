@@ -181,6 +181,7 @@ export default function AnimationDetailPageClient({ code }: { code: string }) {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.2 }}
+                    data-view-mode="preview"
                     className="h-full w-full min-h-[320px] md:min-h-[400px] flex items-center justify-center relative"
                   >
                     <Component />
