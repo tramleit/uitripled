@@ -174,7 +174,7 @@ export function AnimatedProfileMenu() {
 
         <Avatar className="relative h-16 w-16 cursor-pointer border-4 border-background shadow-xl ring-2 ring-border/40 transition-all duration-300 group-hover:ring-4 group-hover:ring-primary/40">
           <AvatarImage
-            src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-1.webp"
+            src="https://iimydr2b8o.ufs.sh/f/Zqn6AViLMoTte8EAuCfSJKE21d4F6TYyNAxBGU3aRflMr5Sn"
             alt="User profile picture"
             className="object-cover"
           />

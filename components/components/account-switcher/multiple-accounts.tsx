@@ -17,21 +17,24 @@ const accountOptions: Account[] = [
     id: "nova-studio",
     name: "Nova Studio",
     email: "finance@tripled.work",
-    avatarUrl: "https://library.shadcnblocks.com/images/block/avatar-2.webp",
+    avatarUrl:
+      "https://iimydr2b8o.ufs.sh/f/Zqn6AViLMoTtHnKrXgkK7FlZGQ2nWi4Jzv0TXU9DVkAd5yE1",
     plan: "Pro",
   },
   {
     id: "growth-lab",
     name: "Growth Lab",
     email: "ops@tripled.work",
-    avatarUrl: "https://library.shadcnblocks.com/images/block/avatar-5.webp",
+    avatarUrl:
+      "https://iimydr2b8o.ufs.sh/f/Zqn6AViLMoTtIYuGoisEhfWHMxKLVXD5ouFcBtgk6enZS0OG",
     plan: "Enterprise",
   },
   {
     id: "personal-workspace",
     name: "Personal Workspace",
     email: "morgan@tripled.work",
-    avatarUrl: "https://library.shadcnblocks.com/images/block/avatar-6.webp",
+    avatarUrl:
+      "https://iimydr2b8o.ufs.sh/f/Zqn6AViLMoTtqpB1uxNk0UapbrAxOtRg9jDGu8sZzWLf2VM1",
     plan: "Free",
   },
 ];
