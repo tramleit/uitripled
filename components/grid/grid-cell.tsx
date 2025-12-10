@@ -7,22 +7,29 @@ interface GridCellProps {
   cols: number;
   rows: number;
   isInSelection: boolean;
-  onMouseDown: (row: number, col: number) => void;
-  onMouseEnter: (row: number, col: number) => void;
+  onPointerDown: (row: number, col: number) => void;
+  onPointerEnter: (row: number, col: number) => void;
 }
 
 export function GridCell({
   cell,
   cols,
   isInSelection,
-  onMouseDown,
-  onMouseEnter,
+  onPointerDown,
+  onPointerEnter,
 }: GridCellProps) {
   return (
     <div
-      onMouseDown={() => onMouseDown(cell.row, cell.col)}
-      onMouseEnter={() => onMouseEnter(cell.row, cell.col)}
-      className={`relative bg-card border border-border rounded-lg p-6 flex items-center justify-center font-bold cursor-crosshair select-none transition-all duration-200 ${
+      onPointerDown={(event) => {
+        event.preventDefault();
+        onPointerDown(cell.row, cell.col);
+      }}
+      onPointerEnter={(event) => {
+        if (event.buttons === 1) {
+          onPointerEnter(cell.row, cell.col);
+        }
+      }}
+      className={`relative bg-card border border-border rounded-lg p-3 sm:p-4 md:p-6 flex items-center justify-center font-bold cursor-crosshair select-none transition-all duration-200 ${
         isInSelection
           ? "ring-4 ring-primary ring-offset-2 scale-95 shadow-2xl"
           : "hover:scale-[1.02] hover:shadow-xl hover:border-border/60"
@@ -44,7 +51,7 @@ export function GridCell({
       />
 
       <div className="text-center relative z-10">
-        <div className="text-2xl text-foreground">
+        <div className="text-lg sm:text-xl md:text-2xl text-foreground">
           {cell.row * cols + cell.col + 1}
         </div>
         {(cell.colSpan > 1 || cell.rowSpan > 1) && (

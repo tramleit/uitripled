@@ -13,10 +13,10 @@ export interface GridPreviewProps {
   rows: number;
   gap: number;
   selectedCells: string[];
-  onMouseDown: (row: number, col: number) => void;
-  onMouseEnter: (row: number, col: number) => void;
-  onMouseUp: () => void;
-  onMouseLeave: () => void;
+  onPointerDown: (row: number, col: number) => void;
+  onPointerEnter: (row: number, col: number) => void;
+  onPointerUp: () => void;
+  onPointerLeave: () => void;
   onAddCell: (row: number, col: number) => void;
   onResetGrid: () => void;
 }
@@ -27,10 +27,10 @@ export function GridPreview({
   rows,
   gap,
   selectedCells,
-  onMouseDown,
-  onMouseEnter,
-  onMouseUp,
-  onMouseLeave,
+  onPointerDown,
+  onPointerEnter,
+  onPointerUp,
+  onPointerLeave,
   onAddCell,
   onResetGrid,
 }: GridPreviewProps) {
@@ -50,7 +50,7 @@ export function GridPreview({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: 0.2 }}
-      className="group relative overflow-hidden rounded-2xl border border-border/40 bg-background/60 p-8 backdrop-blur transition-all hover:border-border/60 hover:shadow-lg"
+      className="group relative overflow-hidden rounded-2xl border border-border/40 bg-background/60 p-4 sm:p-6 lg:p-8 backdrop-blur transition-all hover:border-border/60 hover:shadow-lg w-full min-w-0"
     >
       <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10" />
       <div className="relative">
@@ -70,7 +70,7 @@ export function GridPreview({
           </Button>
         </div>
       </div>
-      <div className="border-2 border-dashed border-border/60 bg-muted/30 rounded-xl p-8 relative overflow-hidden transition-colors duration-300">
+      <div className="border-2 border-dashed border-border/60 bg-muted/30 rounded-xl p-4 sm:p-6 md:p-8 relative overflow-hidden transition-colors duration-300 min-w-0">
         <div
           className="absolute inset-0 opacity-20 pointer-events-none"
           style={{
@@ -82,13 +82,15 @@ export function GridPreview({
 
         <div className="relative">
           <div
-            className={`grid gap-${gap}`}
+            className="grid w-full touch-none"
             style={{
               gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
               gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))`,
+              gap: `${gap * 4}px`,
             }}
-            onMouseUp={onMouseUp}
-            onMouseLeave={onMouseLeave}
+            onPointerUp={onPointerUp}
+            onPointerCancel={onPointerUp}
+            onPointerLeave={onPointerLeave}
           >
             {Array.from({ length: rows })
               .map((_, r) =>
@@ -107,8 +109,8 @@ export function GridPreview({
                           cell.col,
                           selectedCells
                         )}
-                        onMouseDown={onMouseDown}
-                        onMouseEnter={onMouseEnter}
+                        onPointerDown={onPointerDown}
+                        onPointerEnter={onPointerEnter}
                       />
                     );
                   }

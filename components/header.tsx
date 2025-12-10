@@ -16,7 +16,7 @@ export function Header() {
         transition={{ duration: 0.3 }}
         className="sticky top-0 z-50 border-border bg-background/80 backdrop-blur-lg"
       >
-        <div className="container mx-auto flex h-16 items-center justify-between">
+        <div className="container mx-auto flex h-16 px-4 lg:px-0 items-center justify-between">
           <div className="flex items-center gap-8 relative">
             <Link
               href="/"

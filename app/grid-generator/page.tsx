@@ -42,6 +42,8 @@ export default function TailwindGridGenerator() {
   const [useClassName, setUseClassName] = useState(true);
   const [includeBg, setIncludeBg] = useState(true);
   const [cells, setCells] = useState<GridCell[]>([]);
+  const [maxCols, setMaxCols] = useState(12);
+  const [maxGap, setMaxGap] = useState(12);
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState<{
     row: number;
@@ -66,20 +68,48 @@ export default function TailwindGridGenerator() {
     setCells((prev) => [...prev, { row, col, rowSpan: 1, colSpan: 1 }]);
   };
 
+  // Update max columns based on viewport and clamp current cols
+  useEffect(() => {
+    const updateMaxCols = () => {
+      const isMobile = window.innerWidth < 768;
+      const nextMax = isMobile ? 6 : 12;
+      setMaxCols(nextMax);
+      setCols((prev) => Math.min(prev, nextMax));
+    };
+
+    updateMaxCols();
+    window.addEventListener("resize", updateMaxCols);
+    return () => window.removeEventListener("resize", updateMaxCols);
+  }, []);
+
+  // Update max gap based on viewport and clamp current gap
+  useEffect(() => {
+    const updateMaxGap = () => {
+      const isMobile = window.innerWidth < 768;
+      const nextMax = isMobile ? 6 : 12;
+      setMaxGap(nextMax);
+      setGap((prev) => Math.min(prev, nextMax));
+    };
+
+    updateMaxGap();
+    window.addEventListener("resize", updateMaxGap);
+    return () => window.removeEventListener("resize", updateMaxGap);
+  }, []);
+
   // Initialize cells on mount and when cols/rows change
   useEffect(() => {
     setCells(initializeCells(cols, rows));
     setSelectedCells([]);
   }, [cols, rows]);
 
-  const handleMouseDown = (row: number, col: number) => {
+  const handlePointerDown = (row: number, col: number) => {
     setIsDragging(true);
     setDragStart({ row, col });
     setDragEnd({ row, col });
     setSelectedCells([getCellKey(row, col)]);
   };
 
-  const handleMouseEnter = (row: number, col: number) => {
+  const handlePointerEnter = (row: number, col: number) => {
     if (isDragging && dragStart) {
       setDragEnd({ row, col });
 
@@ -98,7 +128,7 @@ export default function TailwindGridGenerator() {
     }
   };
 
-  const handleMouseUp = () => {
+  const handlePointerEnd = () => {
     if (!isDragging || !dragStart || !dragEnd) {
       setIsDragging(false);
       return;
@@ -151,13 +181,14 @@ export default function TailwindGridGenerator() {
     rows: number;
     cells: GridCell[];
   }) => {
-    setCols(preset.cols);
+    const targetCols = Math.min(preset.cols, maxCols);
+    setCols(targetCols);
     setRows(preset.rows);
     setTimeout(() => setCells(preset.cells), 0);
   };
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-background">
+    <main className="container mx-auto relative min-h-screen overflow-hidden bg-background px-4 sm:px-6 md:px-0">
       {/* Glassmorphism background blobs */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <div className="absolute left-1/2 top-0 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-foreground/[0.035] blur-[140px]" />
@@ -189,19 +220,21 @@ export default function TailwindGridGenerator() {
       </motion.header>
 
       {/* Main Content */}
-      <div className="relative px-6 py-8 lg:py-12">
+      <div className="relative px-6 py-8 lg:py-12 md:px-0">
         <div className="mx-auto max-w-7xl">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="grid lg:grid-cols-4 gap-8"
+            className="grid min-w-0 lg:grid-cols-4 gap-8"
           >
             {/* Sidebar Controls */}
-            <div className="lg:col-span-1 space-y-6">
+            <div className="lg:col-span-1 space-y-6 min-w-0">
               <PresetsPanel onApplyPreset={applyPreset} />
               <SettingsPanel
                 cols={cols}
+                maxCols={maxCols}
+                maxGap={maxGap}
                 gap={gap}
                 onColsChange={setCols}
                 onGapChange={setGap}
@@ -211,7 +244,7 @@ export default function TailwindGridGenerator() {
             {/* Main Content */}
             <motion.div
               variants={itemVariants}
-              className="lg:col-span-3 space-y-8"
+              className="lg:col-span-3 space-y-8 min-w-0"
             >
               <GridPreview
                 cells={cells}
@@ -219,10 +252,10 @@ export default function TailwindGridGenerator() {
                 rows={rows}
                 gap={gap}
                 selectedCells={selectedCells}
-                onMouseDown={handleMouseDown}
-                onMouseEnter={handleMouseEnter}
-                onMouseUp={handleMouseUp}
-                onMouseLeave={handleMouseUp}
+                onPointerDown={handlePointerDown}
+                onPointerEnter={handlePointerEnter}
+                onPointerUp={handlePointerEnd}
+                onPointerLeave={handlePointerEnd}
                 onAddCell={handleAddCell}
                 onResetGrid={() => setCells(initializeCells(cols, rows))}
               />

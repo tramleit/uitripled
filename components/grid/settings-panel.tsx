@@ -5,6 +5,8 @@ import { getGapSliderIndex, getGapValueFromIndex } from "@/lib/grid-utils";
 
 interface SettingsPanelProps {
   cols: number;
+  maxCols?: number;
+  maxGap?: number;
   gap: number;
   onColsChange: (cols: number) => void;
   onGapChange: (gap: number) => void;
@@ -12,10 +14,14 @@ interface SettingsPanelProps {
 
 export function SettingsPanel({
   cols,
+  maxCols = 12,
+  maxGap = 12,
   gap,
   onColsChange,
   onGapChange,
 }: SettingsPanelProps) {
+  const gapSliderMax = getGapSliderIndex(maxGap);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -39,7 +45,7 @@ export function SettingsPanel({
             <input
               type="range"
               min="2"
-              max="12"
+              max={maxCols}
               value={cols}
               onChange={(e) => onColsChange(parseInt(e.target.value))}
               className="w-full h-3 rounded-lg appearance-none cursor-pointer bg-muted accent-primary"
@@ -54,7 +60,7 @@ export function SettingsPanel({
             <input
               type="range"
               min="0"
-              max="9"
+              max={gapSliderMax}
               value={getGapSliderIndex(gap)}
               onChange={(e) =>
                 onGapChange(getGapValueFromIndex(parseInt(e.target.value)))
