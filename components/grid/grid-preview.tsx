@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Grid3x3, RotateCcw } from "lucide-react";
+import { Grid3x3, Redo2, RotateCcw, Undo2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GridCell } from "./grid-cell";
 import type { GridCell as GridCellType } from "@/lib/grid-utils";
@@ -19,6 +19,10 @@ export interface GridPreviewProps {
   onPointerLeave: () => void;
   onAddCell: (row: number, col: number) => void;
   onResetGrid: () => void;
+  onUndo: () => void;
+  onRedo: () => void;
+  canUndo: boolean;
+  canRedo: boolean;
 }
 
 export function GridPreview({
@@ -33,6 +37,10 @@ export function GridPreview({
   onPointerLeave,
   onAddCell,
   onResetGrid,
+  onUndo,
+  onRedo,
+  canUndo,
+  canRedo,
 }: GridPreviewProps) {
   const startMap = new Map<string, GridCellType>();
   const occupied = new Set<string>();
@@ -59,15 +67,37 @@ export function GridPreview({
             <Grid3x3 className="w-5 h-5 text-primary" />
             Live Preview
           </h2>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={onResetGrid}
-            className="gap-2 border-border/40 bg-background/60 backdrop-blur hover:border-border/60 hover:bg-background/70"
-          >
-            <RotateCcw className="h-4 w-4" />
-            Reset Grid
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={onUndo}
+              disabled={!canUndo}
+              className="gap-2 border-border/40 bg-background/60 backdrop-blur hover:border-border/60 hover:bg-background/70"
+            >
+              <Undo2 className="h-4 w-4" />
+              Undo
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={onRedo}
+              disabled={!canRedo}
+              className="gap-2 border-border/40 bg-background/60 backdrop-blur hover:border-border/60 hover:bg-background/70"
+            >
+              <Redo2 className="h-4 w-4" />
+              Redo
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={onResetGrid}
+              className="gap-2 border-border/40 bg-background/60 backdrop-blur hover:border-border/60 hover:bg-background/70"
+            >
+              <RotateCcw className="h-4 w-4" />
+              Reset Grid
+            </Button>
+          </div>
         </div>
       </div>
       <div className="border-2 border-dashed border-border/60 bg-muted/30 rounded-xl p-4 sm:p-6 md:p-8 relative overflow-hidden transition-colors duration-300 min-w-0">

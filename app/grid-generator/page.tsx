@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import {
   generateGridCode,
-  initializeCells,
   getCellKey,
+  initializeCells,
   type GridCell,
 } from "@/lib/grid-utils";
 import { SettingsPanel } from "@/components/grid/settings-panel";
@@ -34,6 +34,15 @@ const itemVariants: Variants = {
   },
 };
 
+type GridSnapshot = {
+  cells: GridCell[];
+  cols: number;
+  rows: number;
+  gap: number;
+  useClassName: boolean;
+  includeBg: boolean;
+};
+
 export default function TailwindGridGenerator() {
   const [cols, setCols] = useState(3);
   const [rows, setRows] = useState(3);
@@ -53,6 +62,116 @@ export default function TailwindGridGenerator() {
     null
   );
   const [selectedCells, setSelectedCells] = useState<string[]>([]);
+  const [history, setHistory] = useState<GridSnapshot[]>([]);
+  const [future, setFuture] = useState<GridSnapshot[]>([]);
+  const isRestoringRef = useRef(false);
+
+  const cloneCells = (cellsToClone: GridCell[]) =>
+    cellsToClone.map((cell) => ({ ...cell }));
+
+  const createSnapshot = (override?: Partial<GridSnapshot>): GridSnapshot => ({
+    cells: cloneCells(override?.cells ?? cells),
+    cols: override?.cols ?? cols,
+    rows: override?.rows ?? rows,
+    gap: override?.gap ?? gap,
+    useClassName: override?.useClassName ?? useClassName,
+    includeBg: override?.includeBg ?? includeBg,
+  });
+
+  const pushToHistory = () => {
+    setHistory((prev) => [...prev, createSnapshot()]);
+    setFuture([]);
+  };
+
+  const restoreSnapshot = (snapshot: GridSnapshot) => {
+    isRestoringRef.current = true;
+    setCols(snapshot.cols);
+    setRows(snapshot.rows);
+    setGap(snapshot.gap);
+    setUseClassName(snapshot.useClassName);
+    setIncludeBg(snapshot.includeBg);
+    setCells(cloneCells(snapshot.cells));
+    setSelectedCells([]);
+    setIsDragging(false);
+    setDragStart(null);
+    setDragEnd(null);
+  };
+
+  const snapshotsEqual = (a: GridSnapshot, b: GridSnapshot) => {
+    if (
+      a.cols !== b.cols ||
+      a.rows !== b.rows ||
+      a.gap !== b.gap ||
+      a.useClassName !== b.useClassName ||
+      a.includeBg !== b.includeBg ||
+      a.cells.length !== b.cells.length
+    ) {
+      return false;
+    }
+
+    for (let i = 0; i < a.cells.length; i++) {
+      const cellA = a.cells[i];
+      const cellB = b.cells[i];
+      if (
+        cellA.row !== cellB.row ||
+        cellA.col !== cellB.col ||
+        cellA.rowSpan !== cellB.rowSpan ||
+        cellA.colSpan !== cellB.colSpan
+      ) {
+        return false;
+      }
+    }
+
+    return true;
+  };
+
+  const handleUndo = () => {
+    setHistory((prevHistory) => {
+      if (!prevHistory.length) return prevHistory;
+
+      const previous = prevHistory[prevHistory.length - 1];
+      const currentSnapshot = createSnapshot();
+
+      setFuture((prevFuture) => {
+        // Only add if not already the first item in future
+        if (
+          prevFuture.length > 0 &&
+          snapshotsEqual(prevFuture[0], currentSnapshot)
+        ) {
+          return prevFuture;
+        }
+        return [currentSnapshot, ...prevFuture];
+      });
+
+      restoreSnapshot(previous);
+
+      return prevHistory.slice(0, -1);
+    });
+  };
+
+  const handleRedo = () => {
+    setFuture((prevFuture) => {
+      if (!prevFuture.length) return prevFuture;
+
+      const [next, ...rest] = prevFuture;
+      const currentSnapshot = createSnapshot();
+
+      setHistory((prevHistory) => {
+        // Only add if not already the last item in history
+        if (
+          prevHistory.length > 0 &&
+          snapshotsEqual(prevHistory[prevHistory.length - 1], currentSnapshot)
+        ) {
+          return prevHistory;
+        }
+        return [...prevHistory, currentSnapshot];
+      });
+
+      restoreSnapshot(next);
+
+      return rest;
+    });
+  };
 
   const handleAddCell = (row: number, col: number) => {
     // prevent overlap with existing spans
@@ -65,6 +184,7 @@ export default function TailwindGridGenerator() {
       }
     });
     if (occupied.has(getCellKey(row, col))) return;
+    pushToHistory();
     setCells((prev) => [...prev, { row, col, rowSpan: 1, colSpan: 1 }]);
   };
 
@@ -98,6 +218,11 @@ export default function TailwindGridGenerator() {
 
   // Initialize cells on mount and when cols/rows change
   useEffect(() => {
+    if (isRestoringRef.current) {
+      isRestoringRef.current = false;
+      return;
+    }
+
     setCells(initializeCells(cols, rows));
     setSelectedCells([]);
   }, [cols, rows]);
@@ -163,6 +288,7 @@ export default function TailwindGridGenerator() {
       return a.col - b.col;
     });
 
+    pushToHistory();
     setCells(newCells);
     setIsDragging(false);
     setDragStart(null);
@@ -176,16 +302,58 @@ export default function TailwindGridGenerator() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const handleColsChange = (value: number) => {
+    if (value === cols) return;
+    pushToHistory();
+    setCols(value);
+  };
+
+  const handleGapChange = (value: number) => {
+    if (value === gap) return;
+    pushToHistory();
+    setGap(value);
+  };
+
+  const handleResetGrid = () => {
+    pushToHistory();
+    setCells(initializeCells(cols, rows));
+    setSelectedCells([]);
+    setIsDragging(false);
+    setDragStart(null);
+    setDragEnd(null);
+  };
+
+  const handleToggleUseClassName = (checked: boolean) => {
+    if (checked === useClassName) return;
+    pushToHistory();
+    setUseClassName(checked);
+  };
+
+  const handleToggleIncludeBg = (checked: boolean) => {
+    if (checked === includeBg) return;
+    pushToHistory();
+    setIncludeBg(checked);
+  };
+
   const applyPreset = (preset: {
     cols: number;
     rows: number;
     cells: GridCell[];
   }) => {
     const targetCols = Math.min(preset.cols, maxCols);
+    pushToHistory();
+    isRestoringRef.current = true;
     setCols(targetCols);
     setRows(preset.rows);
-    setTimeout(() => setCells(preset.cells), 0);
+    setCells(cloneCells(preset.cells));
+    setSelectedCells([]);
+    setIsDragging(false);
+    setDragStart(null);
+    setDragEnd(null);
   };
+
+  const canUndo = history.length > 0;
+  const canRedo = future.length > 0;
 
   return (
     <main className="container mx-auto relative min-h-screen overflow-hidden bg-background px-4 sm:px-6 md:px-0">
@@ -236,8 +404,8 @@ export default function TailwindGridGenerator() {
                 maxCols={maxCols}
                 maxGap={maxGap}
                 gap={gap}
-                onColsChange={setCols}
-                onGapChange={setGap}
+                onColsChange={handleColsChange}
+                onGapChange={handleGapChange}
               />
             </div>
 
@@ -257,7 +425,11 @@ export default function TailwindGridGenerator() {
                 onPointerUp={handlePointerEnd}
                 onPointerLeave={handlePointerEnd}
                 onAddCell={handleAddCell}
-                onResetGrid={() => setCells(initializeCells(cols, rows))}
+                onResetGrid={handleResetGrid}
+                onUndo={handleUndo}
+                onRedo={handleRedo}
+                canUndo={canUndo}
+                canRedo={canRedo}
               />
               <CodeOutput
                 code={generateGridCode(cells, cols, gap, {
@@ -272,7 +444,9 @@ export default function TailwindGridGenerator() {
                       <input
                         type="checkbox"
                         checked={useClassName}
-                        onChange={(e) => setUseClassName(e.target.checked)}
+                        onChange={(e) =>
+                          handleToggleUseClassName(e.target.checked)
+                        }
                       />
                       Use <code>className</code>
                     </label>
@@ -280,7 +454,9 @@ export default function TailwindGridGenerator() {
                       <input
                         type="checkbox"
                         checked={includeBg}
-                        onChange={(e) => setIncludeBg(e.target.checked)}
+                        onChange={(e) =>
+                          handleToggleIncludeBg(e.target.checked)
+                        }
                       />
                       Include background classes
                     </label>
