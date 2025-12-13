@@ -223,6 +223,42 @@ import {
   NativeMorphingButtonCustomIcon,
 } from "@/components/native/demo/native-morphing-button-demo";
 import { NativeMorphingButton } from "@/components/native/native-morphing-button";
+import { NativeAvatarExpand } from "@/components/native/native-avatar-expand";
+import {
+  NativeAvatarExpandDefault,
+  NativeAvatarExpandSmall,
+  NativeAvatarExpandLarge,
+  NativeAvatarExpandExtraLarge,
+  NativeAvatarExpandNoImage,
+} from "@/components/native/demo/native-avatar-expand-demo";
+import { NativeAvatarWithName } from "@/components/native/native-avatar-with-name";
+import {
+  NativeAvatarWithNameDefault,
+  NativeAvatarWithNameTop,
+  NativeAvatarWithNameLeft,
+  NativeAvatarWithNameRight,
+  NativeAvatarWithNameSmall,
+  NativeAvatarWithNameLarge,
+  NativeAvatarWithNameNoImage,
+} from "@/components/native/demo/native-avatar-with-name-demo";
+import { NativeImageCheckbox } from "@/components/native/native-image-checkbox";
+import {
+  NativeImageCheckboxDefault,
+  NativeImageCheckboxSmall,
+  NativeImageCheckboxLarge,
+  NativeImageCheckboxExtraLarge,
+  NativeImageCheckboxSelected,
+  NativeImageCheckboxGrid,
+} from "@/components/native/demo/native-image-checkbox-demo";
+import { NativeDelete } from "@/components/native/native-delete";
+import {
+  NativeDeleteDefault,
+  NativeDeleteSmall,
+  NativeDeleteLarge,
+  NativeDeleteCustomText,
+  NativeDeleteNoIcon,
+  NativeDeleteDisabled,
+} from "@/components/native/demo/native-delete-demo";
 
 export const componentsRegistry: Component[] = [
   {
@@ -1084,6 +1120,337 @@ export const componentsRegistry: Component[] = [
     ],
     codePath: "@/components/native/native-morphing-button.tsx",
     duration: "300ms",
+    easing: "spring",
+    display: true,
+  },
+  {
+    id: "native-avatar-expand",
+    name: "Native Avatar Expand",
+    description:
+      "Avatar component that expands to reveal the name on click with smooth animations.",
+    category: "native",
+    tags: ["avatar", "expand", "name", "click", "animation", "native"],
+    component: NativeAvatarExpand,
+    variants: [
+      {
+        id: "default",
+        name: "Default",
+        description: "Standard avatar with expand animation",
+        component: NativeAvatarExpandDefault,
+        code: `<NativeAvatarExpand
+  src="https://github.com/shadcn.png"
+  name="John Doe"
+/>`,
+      },
+      {
+        id: "small",
+        name: "Small",
+        description: "Small size variant",
+        component: NativeAvatarExpandSmall,
+        code: `<NativeAvatarExpand
+  src="https://github.com/shadcn.png"
+  name="Jane Smith"
+  size="sm"
+/>`,
+      },
+      {
+        id: "large",
+        name: "Large",
+        description: "Large size variant",
+        component: NativeAvatarExpandLarge,
+        code: `<NativeAvatarExpand
+  src="https://github.com/shadcn.png"
+  name="Alex Johnson"
+  size="lg"
+/>`,
+      },
+      {
+        id: "extra-large",
+        name: "Extra Large",
+        description: "Extra large size variant",
+        component: NativeAvatarExpandExtraLarge,
+        code: `<NativeAvatarExpand
+  src="https://github.com/shadcn.png"
+  name="Sarah Williams"
+  size="xl"
+/>`,
+      },
+      {
+        id: "no-image",
+        name: "No Image",
+        description: "Avatar with initials fallback",
+        component: NativeAvatarExpandNoImage,
+        code: `<NativeAvatarExpand name="No Image User" />`,
+      },
+    ],
+    codePath: "@/components/native/native-avatar-expand.tsx",
+    duration: "400ms",
+    easing: "spring",
+    display: true,
+  },
+  {
+    id: "native-avatar-with-name",
+    name: "Native Avatar With Name",
+    description:
+      "Avatar component that displays a name tooltip on hover with directional animations.",
+    category: "native",
+    tags: ["avatar", "tooltip", "hover", "name", "animation", "native"],
+    component: NativeAvatarWithName,
+    variants: [
+      {
+        id: "default",
+        name: "Default (Bottom)",
+        description: "Name appears below avatar on hover",
+        component: NativeAvatarWithNameDefault,
+        code: `<NativeAvatarWithName
+  src="https://github.com/shadcn.png"
+  name="John Doe"
+/>`,
+      },
+      {
+        id: "top",
+        name: "Top",
+        description: "Name appears above avatar",
+        component: NativeAvatarWithNameTop,
+        code: `<NativeAvatarWithName
+  src="https://github.com/shadcn.png"
+  name="Jane Smith"
+  direction="top"
+/>`,
+      },
+      {
+        id: "left",
+        name: "Left",
+        description: "Name appears to the left of avatar",
+        component: NativeAvatarWithNameLeft,
+        code: `<NativeAvatarWithName
+  src="https://github.com/shadcn.png"
+  name="Alex Johnson"
+  direction="left"
+/>`,
+      },
+      {
+        id: "right",
+        name: "Right",
+        description: "Name appears to the right of avatar",
+        component: NativeAvatarWithNameRight,
+        code: `<NativeAvatarWithName
+  src="https://github.com/shadcn.png"
+  name="Sarah Williams"
+  direction="right"
+/>`,
+      },
+      {
+        id: "small",
+        name: "Small",
+        description: "Small size variant",
+        component: NativeAvatarWithNameSmall,
+        code: `<NativeAvatarWithName
+  src="https://github.com/shadcn.png"
+  name="Small Avatar"
+  size="sm"
+/>`,
+      },
+      {
+        id: "large",
+        name: "Large",
+        description: "Large size variant",
+        component: NativeAvatarWithNameLarge,
+        code: `<NativeAvatarWithName
+  src="https://github.com/shadcn.png"
+  name="Large Avatar"
+  size="lg"
+/>`,
+      },
+      {
+        id: "no-image",
+        name: "No Image",
+        description: "Avatar with initials fallback",
+        component: NativeAvatarWithNameNoImage,
+        code: `<NativeAvatarWithName name="No Image User" />`,
+      },
+    ],
+    codePath: "@/components/native/native-avatar-with-name.tsx",
+    duration: "300ms",
+    easing: "spring",
+    display: true,
+  },
+  {
+    id: "native-image-checkbox",
+    name: "Native Image Checkbox",
+    description:
+      "Image checkbox component with grayscale filter and checkmark indicator.",
+    category: "native",
+    tags: ["checkbox", "image", "select", "filter", "native"],
+    component: NativeImageCheckbox,
+    variants: [
+      {
+        id: "default",
+        name: "Default",
+        description: "Standard image checkbox",
+        component: NativeImageCheckboxDefault,
+        code: `<NativeImageCheckbox
+  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop"
+  alt="Portrait"
+  selected={selected}
+  onSelect={setSelected}
+/>`,
+      },
+      {
+        id: "small",
+        name: "Small",
+        description: "Small size variant",
+        component: NativeImageCheckboxSmall,
+        code: `<NativeImageCheckbox
+  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
+  alt="Portrait Small"
+  selected={selected}
+  onSelect={setSelected}
+  size="sm"
+/>`,
+      },
+      {
+        id: "large",
+        name: "Large",
+        description: "Large size variant",
+        component: NativeImageCheckboxLarge,
+        code: `<NativeImageCheckbox
+  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop"
+  alt="Portrait Large"
+  selected={selected}
+  onSelect={setSelected}
+  size="lg"
+/>`,
+      },
+      {
+        id: "extra-large",
+        name: "Extra Large",
+        description: "Extra large size variant",
+        component: NativeImageCheckboxExtraLarge,
+        code: `<NativeImageCheckbox
+  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop"
+  alt="Portrait XL"
+  selected={selected}
+  onSelect={setSelected}
+  size="xl"
+/>`,
+      },
+      {
+        id: "selected",
+        name: "Selected",
+        description: "Pre-selected checkbox state",
+        component: NativeImageCheckboxSelected,
+        code: `<NativeImageCheckbox
+  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop"
+  alt="Selected Portrait"
+  selected={true}
+  onSelect={setSelected}
+/>`,
+      },
+      {
+        id: "grid",
+        name: "Grid",
+        description: "Multiple checkboxes in a grid layout",
+        component: NativeImageCheckboxGrid,
+        code: `<div className="grid grid-cols-2 gap-4">
+  <NativeImageCheckbox
+    src="..."
+    alt="Image 1"
+    selected={selected1}
+    onSelect={setSelected1}
+  />
+  {/* More checkboxes... */}
+</div>`,
+      },
+    ],
+    codePath: "@/components/native/native-image-checkbox.tsx",
+    duration: "300ms",
+    easing: "spring",
+    display: true,
+  },
+  {
+    id: "native-delete",
+    name: "Native Delete",
+    description:
+      "Delete button that expands to show a confirmation button with smooth animations.",
+    category: "native",
+    tags: ["delete", "button", "confirm", "destructive", "animation", "native"],
+    component: NativeDelete,
+    variants: [
+      {
+        id: "default",
+        name: "Default",
+        description: "Standard delete button with confirmation",
+        component: NativeDeleteDefault,
+        code: `<NativeDelete
+  onDelete={() => {
+    // Handle delete action
+    console.log("Deleted!");
+  }}
+/>`,
+      },
+      {
+        id: "small",
+        name: "Small",
+        description: "Small size variant",
+        component: NativeDeleteSmall,
+        code: `<NativeDelete
+  size="sm"
+  onDelete={() => {
+    // Handle delete action
+  }}
+/>`,
+      },
+      {
+        id: "large",
+        name: "Large",
+        description: "Large size variant",
+        component: NativeDeleteLarge,
+        code: `<NativeDelete
+  size="lg"
+  onDelete={() => {
+    // Handle delete action
+  }}
+/>`,
+      },
+      {
+        id: "custom-text",
+        name: "Custom Text",
+        description: "Custom button and confirm text",
+        component: NativeDeleteCustomText,
+        code: `<NativeDelete
+  buttonText="Remove Item"
+  confirmText="Yes, Remove"
+  onDelete={() => {
+    // Handle delete action
+  }}
+/>`,
+      },
+      {
+        id: "no-icon",
+        name: "No Icon",
+        description: "Delete button without icon",
+        component: NativeDeleteNoIcon,
+        code: `<NativeDelete
+  showIcon={false}
+  onDelete={() => {
+    // Handle delete action
+  }}
+/>`,
+      },
+      {
+        id: "disabled",
+        name: "Disabled",
+        description: "Disabled state",
+        component: NativeDeleteDisabled,
+        code: `<NativeDelete
+  disabled
+  onDelete={() => {}}
+/>`,
+      },
+    ],
+    codePath: "@/components/native/native-delete.tsx",
+    duration: "400ms",
     easing: "spring",
     display: true,
   },

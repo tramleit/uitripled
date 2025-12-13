@@ -1,6 +1,6 @@
 ---
-title: Minimal Resume
-description: Vercel-inspired minimal resume with clean typography and grid layout
+title: Native Image Checkbox
+description: Image checkbox component with grayscale filter and checkmark indicator.
 component: true
 ---
 
@@ -9,11 +9,11 @@ component: true
 
 import * as React from "react"
 
-import { MinimalResume } from "@/components/components/resumes/minimal-resume.tsx"
+import { NativeImageCheckbox } from "components/native/native-image-checkbox.tsx"
 
-export function MinimalResumeDemo() {
+export function NativeImageCheckboxDemo() {
   return (
-    <MinimalResume />
+    <NativeImageCheckbox />
   )
 }
 ```
@@ -29,7 +29,7 @@ export function MinimalResumeDemo() {
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add @uitripled/minimal-resume
+npx shadcn@latest add @uitripled/native-image-checkbox
 ```
 
 </TabsContent>
@@ -40,7 +40,7 @@ npx shadcn@latest add @uitripled/minimal-resume
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="minimal-resume" title="@/components/components/resumes/minimal-resume.tsx" />
+<ComponentSource name="native-image-checkbox" title="components/native/native-image-checkbox.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -53,17 +53,17 @@ npx shadcn@latest add @uitripled/minimal-resume
 ## Usage
 
 ```tsx showLineNumbers
-import { MinimalResume } from "@/components/components/resumes/minimal-resume.tsx"
+import { NativeImageCheckbox } from "components/native/native-image-checkbox.tsx"
 ```
 
 ```tsx showLineNumbers
-<MinimalResume />
+<NativeImageCheckbox />
 ```
 
 ## Component Details
 
-- **Category**: resumes
-- **Tags**: resume, cv, minimal, clean, vercel, grid
+- **Category**: native
+- **Tags**: checkbox, image, select, filter, native
 
 ### Technical Specifications
 
@@ -72,8 +72,6 @@ import { MinimalResume } from "@/components/components/resumes/minimal-resume.ts
 - `react`
 
 This component uses **Framer Motion** for animations and motion effects.
-
-This component is built on top of **shadcn/ui** component primitives.
 
 ## Customization
 
@@ -101,11 +99,11 @@ The component follows accessibility best practices:
 
 import * as React from "react"
 
-import { MinimalResume } from "@/components/components/resumes/minimal-resume.tsx"
+import { NativeImageCheckbox } from "components/native/native-image-checkbox.tsx"
 
 export function BasicExample() {
   return (
-    <MinimalResume />
+    <NativeImageCheckbox />
   )
 }
 ```

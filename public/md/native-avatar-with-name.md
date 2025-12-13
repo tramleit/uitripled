@@ -1,6 +1,6 @@
 ---
-title: Minimal Resume
-description: Vercel-inspired minimal resume with clean typography and grid layout
+title: Native Avatar With Name
+description: Avatar component that displays a name tooltip on hover with directional animations.
 component: true
 ---
 
@@ -9,11 +9,11 @@ component: true
 
 import * as React from "react"
 
-import { MinimalResume } from "@/components/components/resumes/minimal-resume.tsx"
+import { NativeAvatarWithName } from "components/native/native-avatar-with-name.tsx"
 
-export function MinimalResumeDemo() {
+export function NativeAvatarWithNameDemo() {
   return (
-    <MinimalResume />
+    <NativeAvatarWithName />
   )
 }
 ```
@@ -29,7 +29,7 @@ export function MinimalResumeDemo() {
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add @uitripled/minimal-resume
+npx shadcn@latest add @uitripled/native-avatar-with-name
 ```
 
 </TabsContent>
@@ -40,7 +40,7 @@ npx shadcn@latest add @uitripled/minimal-resume
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="minimal-resume" title="@/components/components/resumes/minimal-resume.tsx" />
+<ComponentSource name="native-avatar-with-name" title="components/native/native-avatar-with-name.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -53,17 +53,17 @@ npx shadcn@latest add @uitripled/minimal-resume
 ## Usage
 
 ```tsx showLineNumbers
-import { MinimalResume } from "@/components/components/resumes/minimal-resume.tsx"
+import { NativeAvatarWithName } from "components/native/native-avatar-with-name.tsx"
 ```
 
 ```tsx showLineNumbers
-<MinimalResume />
+<NativeAvatarWithName />
 ```
 
 ## Component Details
 
-- **Category**: resumes
-- **Tags**: resume, cv, minimal, clean, vercel, grid
+- **Category**: native
+- **Tags**: avatar, tooltip, hover, name, animation, native
 
 ### Technical Specifications
 
@@ -101,11 +101,11 @@ The component follows accessibility best practices:
 
 import * as React from "react"
 
-import { MinimalResume } from "@/components/components/resumes/minimal-resume.tsx"
+import { NativeAvatarWithName } from "components/native/native-avatar-with-name.tsx"
 
 export function BasicExample() {
   return (
-    <MinimalResume />
+    <NativeAvatarWithName />
   )
 }
 ```

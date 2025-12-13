@@ -2,11 +2,11 @@
 
 > Production-ready UI components, blocks, and pages built on top of shadcn/ui and Framer Motion.
 
-**Last Updated:** 2025-12-13T17:09:24.989Z
+**Last Updated:** 2025-12-13T23:43:35.787Z
 
 ## Table of Contents
 
-- Components (90 items)
+- Components (94 items)
 - Blocks (38 items)
 - Pages (15 items)
 - UI Elements (26 items)
@@ -116,11 +116,15 @@
 - [Wizard Form](https://ui.tripled.work/components/wizard-form): Multi-step wizard form with animated transitions, validation, and progress tracking
 
 - [Bottom Modal](https://ui.tripled.work/components/bottom-modal): Cute bottom-centered modal with smooth slide-up animation and glassmorphism design
+- [Native Avatar Expand](https://ui.tripled.work/components/native-avatar-expand): Avatar component that expands to reveal the name on click with smooth animations.
+- [Native Avatar With Name](https://ui.tripled.work/components/native-avatar-with-name): Avatar component that displays a name tooltip on hover with directional animations.
 - [Native Badge](https://ui.tripled.work/components/native-badge): Animated badge component with glass, glow, and outline variants for native feel.
 - [Native Button](https://ui.tripled.work/components/native-button): Glassmorphism-inspired button component based on shadcn/ui with smooth animations and modern styling
 - [Native Counter Up](https://ui.tripled.work/components/native-counter-up): Animated number counter with smooth easing and accessibility support.
+- [Native Delete](https://ui.tripled.work/components/native-delete): Delete button that expands to show a confirmation button with smooth animations.
 - [Native Dialog](https://ui.tripled.work/components/native-dialog): A glassmorphism-styled dialog component with backdrop blur and smooth animations, inspired by native OS modals.
 - [Native Flip Text](https://ui.tripled.work/components/native-flip-text): Text that flips through words with a 3D blur transition.
+- [Native Image Checkbox](https://ui.tripled.work/components/native-image-checkbox): Image checkbox component with grayscale filter and checkmark indicator.
 - [Native Magnetic](https://ui.tripled.work/components/native-magnetic): Magnetic wrapper that applies a cursor-following effect to any content.
 - [Native Morphing Button](https://ui.tripled.work/components/native-morphing-button): Floating action button that morphs into a menu of actions.
 - [Native Notification Bell](https://ui.tripled.work/components/native-notification-bell): Animated notification bell with badge and ringing effect.

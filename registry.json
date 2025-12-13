@@ -2450,6 +2450,44 @@
       "subcategory": null
     },
     {
+      "name": "native-avatar-expand",
+      "type": "registry:component",
+      "title": "Native Avatar Expand",
+      "description": "Avatar component that expands to reveal the name on click with smooth animations.",
+      "registryDependencies": [],
+      "dependencies": [
+        "framer-motion",
+        "react"
+      ],
+      "files": [
+        {
+          "path": "components/native/native-avatar-expand.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "category": "native",
+      "subcategory": null
+    },
+    {
+      "name": "native-avatar-with-name",
+      "type": "registry:component",
+      "title": "Native Avatar With Name",
+      "description": "Avatar component that displays a name tooltip on hover with directional animations.",
+      "registryDependencies": [],
+      "dependencies": [
+        "framer-motion",
+        "react"
+      ],
+      "files": [
+        {
+          "path": "components/native/native-avatar-with-name.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "category": "native",
+      "subcategory": null
+    },
+    {
       "name": "native-badge",
       "type": "registry:component",
       "title": "Native Badge",
@@ -2507,6 +2545,25 @@
       "subcategory": null
     },
     {
+      "name": "native-delete",
+      "type": "registry:component",
+      "title": "Native Delete",
+      "description": "Delete button that expands to show a confirmation button with smooth animations.",
+      "registryDependencies": [],
+      "dependencies": [
+        "framer-motion",
+        "react"
+      ],
+      "files": [
+        {
+          "path": "components/native/native-delete.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "category": "native",
+      "subcategory": null
+    },
+    {
       "name": "native-dialog",
       "type": "registry:component",
       "title": "Native Dialog",
@@ -2538,6 +2595,25 @@
       "files": [
         {
           "path": "components/native/native-flip-text.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "category": "native",
+      "subcategory": null
+    },
+    {
+      "name": "native-image-checkbox",
+      "type": "registry:component",
+      "title": "Native Image Checkbox",
+      "description": "Image checkbox component with grayscale filter and checkmark indicator.",
+      "registryDependencies": [],
+      "dependencies": [
+        "framer-motion",
+        "react"
+      ],
+      "files": [
+        {
+          "path": "components/native/native-image-checkbox.tsx",
           "type": "registry:component"
         }
       ],

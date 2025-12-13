@@ -1,6 +1,6 @@
 ---
-title: Minimal Resume
-description: Vercel-inspired minimal resume with clean typography and grid layout
+title: Native Avatar Expand
+description: Avatar component that expands to reveal the name on click with smooth animations.
 component: true
 ---
 
@@ -9,11 +9,11 @@ component: true
 
 import * as React from "react"
 
-import { MinimalResume } from "@/components/components/resumes/minimal-resume.tsx"
+import { NativeAvatarExpand } from "@/components/native/native-morphing-button.tsx"
 
-export function MinimalResumeDemo() {
+export function NativeAvatarExpandDemo() {
   return (
-    <MinimalResume />
+    <NativeAvatarExpand />
   )
 }
 ```
@@ -29,7 +29,7 @@ export function MinimalResumeDemo() {
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add @uitripled/minimal-resume
+npx shadcn@latest add @uitripled/native-avatar-expand
 ```
 
 </TabsContent>
@@ -40,7 +40,7 @@ npx shadcn@latest add @uitripled/minimal-resume
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="minimal-resume" title="@/components/components/resumes/minimal-resume.tsx" />
+<ComponentSource name="native-avatar-expand" title="@/components/native/native-morphing-button.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -53,17 +53,17 @@ npx shadcn@latest add @uitripled/minimal-resume
 ## Usage
 
 ```tsx showLineNumbers
-import { MinimalResume } from "@/components/components/resumes/minimal-resume.tsx"
+import { NativeAvatarExpand } from "@/components/native/native-morphing-button.tsx"
 ```
 
 ```tsx showLineNumbers
-<MinimalResume />
+<NativeAvatarExpand />
 ```
 
 ## Component Details
 
-- **Category**: resumes
-- **Tags**: resume, cv, minimal, clean, vercel, grid
+- **Category**: native
+- **Tags**: avatar, expand, name, click, animation, native
 
 ### Technical Specifications
 
@@ -72,8 +72,6 @@ import { MinimalResume } from "@/components/components/resumes/minimal-resume.ts
 - `react`
 
 This component uses **Framer Motion** for animations and motion effects.
-
-This component is built on top of **shadcn/ui** component primitives.
 
 ## Customization
 
@@ -101,11 +99,11 @@ The component follows accessibility best practices:
 
 import * as React from "react"
 
-import { MinimalResume } from "@/components/components/resumes/minimal-resume.tsx"
+import { NativeAvatarExpand } from "@/components/native/native-morphing-button.tsx"
 
 export function BasicExample() {
   return (
-    <MinimalResume />
+    <NativeAvatarExpand />
   )
 }
 ```
