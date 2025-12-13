@@ -9,6 +9,9 @@ export function NativeDeleteDefault() {
     <div className="flex items-center justify-center p-4">
       {!deleted ? (
         <NativeDelete
+          onConfirm={() => {
+            // Handle confirmation UI shown
+          }}
           onDelete={() => {
             setDeleted(true);
             setTimeout(() => setDeleted(false), 2000);
@@ -28,6 +31,9 @@ export function NativeDeleteSmall() {
       {!deleted ? (
         <NativeDelete
           size="sm"
+          onConfirm={() => {
+            // Handle confirmation UI shown
+          }}
           onDelete={() => {
             setDeleted(true);
             setTimeout(() => setDeleted(false), 2000);
@@ -47,6 +53,9 @@ export function NativeDeleteLarge() {
       {!deleted ? (
         <NativeDelete
           size="lg"
+          onConfirm={() => {
+            // Handle confirmation UI shown
+          }}
           onDelete={() => {
             setDeleted(true);
             setTimeout(() => setDeleted(false), 2000);
@@ -67,6 +76,9 @@ export function NativeDeleteCustomText() {
         <NativeDelete
           buttonText="Remove Item"
           confirmText="Yes, Remove"
+          onConfirm={() => {
+            // Handle confirmation UI shown
+          }}
           onDelete={() => {
             setDeleted(true);
             setTimeout(() => setDeleted(false), 2000);
@@ -86,6 +98,9 @@ export function NativeDeleteNoIcon() {
       {!deleted ? (
         <NativeDelete
           showIcon={false}
+          onConfirm={() => {
+            // Handle confirmation UI shown
+          }}
           onDelete={() => {
             setDeleted(true);
             setTimeout(() => setDeleted(false), 2000);
@@ -101,7 +116,11 @@ export function NativeDeleteNoIcon() {
 export function NativeDeleteDisabled() {
   return (
     <div className="flex items-center justify-center p-4">
-      <NativeDelete disabled onDelete={() => {}} />
+      <NativeDelete
+        disabled
+        onConfirm={() => {}}
+        onDelete={() => {}}
+      />
     </div>
   );
 }

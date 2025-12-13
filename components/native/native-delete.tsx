@@ -8,6 +8,10 @@ import { useState } from "react";
 
 export interface NativeDeleteProps {
   /**
+   * Callback when delete button is first clicked (shows confirmation)
+   */
+  onConfirm: () => void;
+  /**
    * Callback when delete is confirmed
    */
   onDelete: () => void;
@@ -54,6 +58,7 @@ const iconSizeVariants = {
 };
 
 export function NativeDelete({
+  onConfirm,
   onDelete,
   buttonText = "Delete",
   confirmText = "Confirm",
@@ -63,6 +68,13 @@ export function NativeDelete({
   disabled = false,
 }: NativeDeleteProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleDeleteClick = () => {
+    if (!disabled) {
+      setIsExpanded(true);
+      onConfirm();
+    }
+  };
 
   const handleConfirm = () => {
     onDelete();
@@ -111,7 +123,7 @@ export function NativeDelete({
               "shadow-md hover:shadow-lg transition-shadow",
               disabled && "opacity-50 cursor-not-allowed"
             )}
-            onClick={() => !disabled && setIsExpanded(true)}
+            onClick={isExpanded ? handleConfirm : handleDeleteClick}
             disabled={disabled}
           >
             {showIcon && !isExpanded && (

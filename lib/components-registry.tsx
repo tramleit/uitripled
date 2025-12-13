@@ -1383,6 +1383,9 @@ export const componentsRegistry: Component[] = [
         description: "Standard delete button with confirmation",
         component: NativeDeleteDefault,
         code: `<NativeDelete
+  onConfirm={() => {
+    // Handle confirmation UI shown
+  }}
   onDelete={() => {
     // Handle delete action
     console.log("Deleted!");
@@ -1396,6 +1399,9 @@ export const componentsRegistry: Component[] = [
         component: NativeDeleteSmall,
         code: `<NativeDelete
   size="sm"
+  onConfirm={() => {
+    // Handle confirmation UI shown
+  }}
   onDelete={() => {
     // Handle delete action
   }}
@@ -1408,6 +1414,9 @@ export const componentsRegistry: Component[] = [
         component: NativeDeleteLarge,
         code: `<NativeDelete
   size="lg"
+  onConfirm={() => {
+    // Handle confirmation UI shown
+  }}
   onDelete={() => {
     // Handle delete action
   }}
@@ -1421,6 +1430,9 @@ export const componentsRegistry: Component[] = [
         code: `<NativeDelete
   buttonText="Remove Item"
   confirmText="Yes, Remove"
+  onConfirm={() => {
+    // Handle confirmation UI shown
+  }}
   onDelete={() => {
     // Handle delete action
   }}
@@ -1433,6 +1445,9 @@ export const componentsRegistry: Component[] = [
         component: NativeDeleteNoIcon,
         code: `<NativeDelete
   showIcon={false}
+  onConfirm={() => {
+    // Handle confirmation UI shown
+  }}
   onDelete={() => {
     // Handle delete action
   }}
@@ -1445,6 +1460,7 @@ export const componentsRegistry: Component[] = [
         component: NativeDeleteDisabled,
         code: `<NativeDelete
   disabled
+  onConfirm={() => {}}
   onDelete={() => {}}
 />`,
       },
