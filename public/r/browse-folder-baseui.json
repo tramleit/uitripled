@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "browse-folder-baseui",
+  "type": "registry:component",
+  "title": "Browse Folder",
+  "description": "Folder browser with animated tabs and content (Base UI)",
+  "registryDependencies": [
+    "button"
+  ],
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "files": [
+    {
+      "path": "components/sections/baseui/browse-folder.tsx",
+      "content": "// Error: Could not read file components/sections/baseui/browse-folder.tsx\n// File not found: components/sections/baseui/browse-folder.tsx",
+      "type": "registry:component",
+      "target": "components/sections/baseui/browse-folder"
+    }
+  ]
+}

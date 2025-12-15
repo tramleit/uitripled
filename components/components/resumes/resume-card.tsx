@@ -1,20 +1,20 @@
 "use client";
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { motion } from "framer-motion";
 import {
   Download,
-  Mail,
-  Phone,
-  MapPin,
   Github,
-  Linkedin,
   Globe,
+  Linkedin,
+  Mail,
+  MapPin,
+  Phone,
   Star,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Separator } from "@/components/ui/separator";
 
 const RESUME_DATA = {
   personalInfo: {

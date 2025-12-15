@@ -1,9 +1,9 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
-import { Mail, Phone, MapPin, Linkedin, Globe, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { motion, Variants } from "framer-motion";
+import { Download, Globe, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 
 const RESUME_DATA = {
   personalInfo: {

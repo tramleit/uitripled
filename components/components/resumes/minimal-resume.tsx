@@ -1,18 +1,16 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { motion, Variants } from "framer-motion";
 import {
   ArrowUpRight,
   Github,
-  Twitter,
-  Mail,
-  Link as LinkIcon,
-  MapPin,
   Globe,
+  Mail,
+  MapPin,
+  Twitter,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
 
 const RESUME_DATA = {
   profile: {

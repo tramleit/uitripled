@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "about-us-section-baseui",
+  "type": "registry:block",
+  "title": "About Us",
+  "description": "About us section with value cards, icons, and animated reveal effects (Base UI)",
+  "registryDependencies": [
+    "button"
+  ],
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "files": [
+    {
+      "path": "components/sections/baseui/about-us-section.tsx",
+      "content": "// Error: Could not read file components/sections/baseui/about-us-section.tsx\n// File not found: components/sections/baseui/about-us-section.tsx",
+      "type": "registry:block",
+      "target": "components/sections/baseui/about-us-section"
+    }
+  ]
+}

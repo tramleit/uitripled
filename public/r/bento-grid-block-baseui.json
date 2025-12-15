@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bento-grid-block-baseui",
+  "type": "registry:block",
+  "title": "Bento Grid Block",
+  "description": "Layered bento grid with imagery, metrics, and smooth motion reveals (Base UI)",
+  "registryDependencies": [
+    "button"
+  ],
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "files": [
+    {
+      "path": "components/sections/baseui/bento-grid-block.tsx",
+      "content": "// Error: Could not read file components/sections/baseui/bento-grid-block.tsx\n// File not found: components/sections/baseui/bento-grid-block.tsx",
+      "type": "registry:block",
+      "target": "components/sections/baseui/bento-grid-block"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "currency-converter-card-baseui",
+  "type": "registry:component",
+  "title": "Currency Converter Card",
+  "description": "Currency converter with real-time rates and swap functionality (Base UI)",
+  "registryDependencies": [
+    "button",
+    "card"
+  ],
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "files": [
+    {
+      "path": "components/sections/baseui/currency-converter-card.tsx",
+      "content": "// Error: Could not read file components/sections/baseui/currency-converter-card.tsx\n// File not found: components/sections/baseui/currency-converter-card.tsx",
+      "type": "registry:component",
+      "target": "components/sections/baseui/currency-converter-card"
+    }
+  ]
+}

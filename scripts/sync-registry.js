@@ -1,10 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const COMPONENTS_REGISTRY_PATH = path.join(
-  __dirname,
-  "../lib/components-registry.tsx"
-);
+const REGISTRY_DIR = path.join(__dirname, "../lib/registry");
 const REGISTRY_JSON_PATH = path.join(__dirname, "../registry.json");
 
 // Category to registry type mapping
@@ -37,11 +34,30 @@ const DEFAULT_DEPENDENCIES = {
 };
 
 /**
- * Extract component imports and registry entries from components-registry.tsx
+ * Extract component imports and registry entries from registry files
  */
 function parseComponentsRegistry() {
-  const content = fs.readFileSync(COMPONENTS_REGISTRY_PATH, "utf-8");
+  if (!fs.existsSync(REGISTRY_DIR)) {
+    throw new Error(`Registry directory not found: ${REGISTRY_DIR}`);
+  }
 
+  const files = fs
+    .readdirSync(REGISTRY_DIR)
+    .filter((file) => file.endsWith(".tsx") && file !== "index.tsx");
+
+  let allEntries = [];
+
+  for (const file of files) {
+    const filePath = path.join(REGISTRY_DIR, file);
+    const content = fs.readFileSync(filePath, "utf-8");
+    const entries = parseRegistryFile(content, file);
+    allEntries = [...allEntries, ...entries];
+  }
+
+  return allEntries;
+}
+
+function parseRegistryFile(content, fileName) {
   // Extract component imports - handle both single and multiple imports
   const componentImports = {};
   const importRegex =
@@ -59,85 +75,114 @@ function parseComponentsRegistry() {
     });
   }
 
-  // Extract componentsRegistry entries
-  const registryStart = content.indexOf(
-    "export const componentsRegistry: Component[] = ["
-  );
-  const registryEnd = content.lastIndexOf("];", content.length);
+  // Find array definitions (e.g., export const nativeComponents = [...])
+  // We look for any array export
+  const exportArrayRegex = /export const \w+\s*:\s*Component\[\]\s*=\s*\[/g;
 
-  if (registryStart === -1 || registryEnd === -1) {
-    throw new Error(
-      "Could not find componentsRegistry in components-registry.tsx"
-    );
-  }
-
-  const registryContent = content.substring(registryStart, registryEnd);
-
-  // Parse entries - split by entry boundaries
   const entries = [];
-  const entryPattern = /\{\s*id:\s*"([^"]+)"/g;
-  let lastIndex = 0;
-  const entryIndices = [];
 
-  while ((match = entryPattern.exec(registryContent)) !== null) {
-    entryIndices.push(match.index);
-  }
+  let arrayMatch;
+  while ((arrayMatch = exportArrayRegex.exec(content)) !== null) {
+    const startIndex = arrayMatch.index + arrayMatch[0].length;
 
-  // Parse each entry
-  for (let i = 0; i < entryIndices.length; i++) {
-    const start = entryIndices[i];
-    const end =
-      i < entryIndices.length - 1
-        ? entryIndices[i + 1]
-        : registryContent.length;
-    const entryText = registryContent.substring(start, end);
+    // Find the end of this array
+    let depth = 1;
+    let endIndex = startIndex;
 
-    // Extract id
-    const idMatch = entryText.match(/id:\s*"([^"]+)"/);
-    if (!idMatch) continue;
+    for (let i = startIndex; i < content.length; i++) {
+      if (content[i] === "[") depth++;
+      if (content[i] === "]") depth--;
+      if (depth === 0) {
+        endIndex = i;
+        break;
+      }
+    }
 
-    const id = idMatch[1];
+    const registryContent = content.substring(startIndex, endIndex);
 
-    // Extract name (title)
-    const nameMatch = entryText.match(/name:\s*"([^"]+)"/);
-    const name = nameMatch ? nameMatch[1] : null;
+    // Parse entries
+    const entryPattern = /\{\s*id:\s*"([^"]+)"/g;
+    const entryIndices = [];
 
-    // Extract description (handle multi-line descriptions)
-    // Match description: followed by optional whitespace/newline and then quoted string
-    // Use [\s\S] to match any character including newlines
-    const descriptionMatch = entryText.match(
-      /description:\s*"((?:[^"\\]|\\.|[\s\S])*?)"/
-    );
-    const description = descriptionMatch
-      ? descriptionMatch[1].replace(/\\"/g, '"').replace(/\\n/g, "\n").trim()
-      : null;
+    while ((match = entryPattern.exec(registryContent)) !== null) {
+      entryIndices.push(match.index);
+    }
 
-    // Extract category
-    const categoryMatch = entryText.match(/category:\s*"([^"]+)"/);
-    if (!categoryMatch) continue;
+    for (let i = 0; i < entryIndices.length; i++) {
+      const start = entryIndices[i];
+      const end =
+        i < entryIndices.length - 1
+          ? entryIndices[i + 1]
+          : registryContent.length;
+      const entryText = registryContent.substring(start, end);
 
-    const category = categoryMatch[1];
+      // Extract id
+      const idMatch = entryText.match(/id:\s*"([^"]+)"/);
+      if (!idMatch) continue;
 
-    // Extract component name
-    const componentMatch = entryText.match(/component:\s*(\w+)/);
-    if (!componentMatch) continue;
+      const id = idMatch[1];
 
-    const componentName = componentMatch[1];
-    const componentPath = componentImports[componentName];
+      // Extract name (title)
+      const nameMatch = entryText.match(/name:\s*"([^"]+)"/);
+      const name = nameMatch ? nameMatch[1] : null;
 
-    if (componentPath) {
-      entries.push({
-        id,
-        name,
-        description,
-        category,
-        componentName,
-        componentPath,
-      });
-    } else {
-      console.warn(
-        `⚠️  Could not find import path for component: ${componentName}`
+      // Extract description
+      const descriptionMatch = entryText.match(
+        /description:\s*"((?:[^"\\]|\\.|[\s\S])*?)"/
       );
+      const description = descriptionMatch
+        ? descriptionMatch[1].replace(/\\"/g, '"').replace(/\\n/g, "\n").trim()
+        : null;
+
+      // Extract category
+      const categoryMatch = entryText.match(/category:\s*"([^"]+)"/);
+      if (!categoryMatch) continue;
+
+      const category = categoryMatch[1];
+
+      // Extract codePath (explicit path override)
+      const codePathMatch = entryText.match(/codePath:\s*["']@\/([^"']+)["']/);
+      let componentPath = null;
+      let componentName = null;
+
+      if (codePathMatch) {
+        componentPath = codePathMatch[1];
+        // Normalize path: Remove generic 'components/' prefix and extension as convertToRegistryPath adds them
+        if (componentPath.startsWith("components/")) {
+          componentPath = componentPath.replace(/^components\//, "");
+        }
+        if (componentPath.endsWith(".tsx")) {
+          componentPath = componentPath.replace(/\.tsx$/, "");
+        }
+        // Determine componentName from path or generic
+        componentName = path.basename(componentPath, ".tsx");
+      } else {
+        // Extract component name from component property
+        const componentMatch = entryText.match(/component:\s*(\w+)/);
+        if (componentMatch) {
+          componentName = componentMatch[1];
+          componentPath = componentImports[componentName];
+        }
+      }
+
+      if (componentPath) {
+        entries.push({
+          id,
+          name,
+          description,
+          category,
+          componentName,
+          componentPath,
+        });
+      } else {
+        // warning only if we expected to find it
+        if (name) {
+          // primitive check if it's a valid entry
+          console.warn(
+            `⚠️  Could not find import path or codePath for component: ${id} in ${fileName}`
+          );
+        }
+      }
     }
   }
 

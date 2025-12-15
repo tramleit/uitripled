@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "projects-block-baseui",
+  "type": "registry:component",
+  "title": "Projects Block",
+  "description": "Animated project card with hover effects, image zoom, and link buttons (Base UI)",
+  "registryDependencies": [
+    "button"
+  ],
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "files": [
+    {
+      "path": "components/sections/baseui/projects-block.tsx",
+      "content": "// Error: Could not read file components/sections/baseui/projects-block.tsx\n// File not found: components/sections/baseui/projects-block.tsx",
+      "type": "registry:component",
+      "target": "components/sections/baseui/projects-block"
+    }
+  ]
+}
