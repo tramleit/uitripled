@@ -256,9 +256,9 @@ function checkFileExists(registryPath) {
  */
 function getTargetPath(componentId, uiLibrary = null) {
   if (uiLibrary) {
-    return `components/uitripled/${componentId}-${uiLibrary}`;
+    return `components/uitripled/${componentId}-${uiLibrary}.tsx`;
   }
-  return `components/uitripled/${componentId}`;
+  return `components/uitripled/${componentId}.tsx`;
 }
 
 /**

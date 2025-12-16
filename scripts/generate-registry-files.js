@@ -67,8 +67,8 @@ function generateRegistryFiles() {
               // Extract just the component filename and install to components/uitripled/
               const pathParts = file.path.split("/");
               const filename = pathParts[pathParts.length - 1];
-              const componentName = filename.replace(/\.tsx?$/, "");
-              targetPath = `components/uitripled/${componentName}`;
+              // Keep the extension (.tsx) in the target path for proper file installation
+              targetPath = `components/uitripled/${filename}`;
             }
 
             return {
@@ -88,8 +88,8 @@ function generateRegistryFiles() {
               // Extract just the component filename and install to components/uitripled/
               const pathParts = file.path.split("/");
               const filename = pathParts[pathParts.length - 1];
-              const componentName = filename.replace(/\.tsx?$/, "");
-              targetPath = `components/uitripled/${componentName}`;
+              // Keep the extension (.tsx) in the target path for proper file installation
+              targetPath = `components/uitripled/${filename}`;
             }
             return {
               path: file.path,
