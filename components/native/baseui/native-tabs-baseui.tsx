@@ -37,14 +37,13 @@ export function NativeTabs({
               value={tab.id}
               className="relative z-10 flex-1 cursor-pointer rounded-lg px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 aria-selected:text-foreground text-muted-foreground hover:text-foreground bg-transparent border-0"
             >
-              <motion.div
-                layoutId="active-tab-baseui"
-                className="absolute inset-0 z-[-1] rounded-lg bg-background shadow-sm border border-black/5 dark:border-white/5"
-                animate={{
-                  opacity: isActive ? 1 : 0,
-                }}
-                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-              />
+              {isActive && (
+                <motion.div
+                  layoutId="active-tab-baseui"
+                  className="absolute inset-0 z-[-1] rounded-lg bg-background shadow-sm border border-black/5 dark:border-white/5"
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+              )}
               {tab.label}
             </Tabs.Tab>
           );
