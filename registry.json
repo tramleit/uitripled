@@ -4334,6 +4334,68 @@
       "subcategory": null
     },
     {
+      "name": "native-profile-notch",
+      "type": "registry:component",
+      "title": "Native Profile Notch",
+      "description": "A dynamic expanding notch component for displaying user profiles with smooth spring animations.",
+      "registryDependencies": [],
+      "dependencies": [
+        "framer-motion",
+        "react"
+      ],
+      "files": [
+        {
+          "path": "components/native/shadcnui/native-profile-notch-shadcnui.tsx",
+          "type": "registry:component",
+          "target": "components/uitripled/native-profile-notch.tsx"
+        }
+      ],
+      "category": "native",
+      "subcategory": null
+    },
+    {
+      "name": "native-profile-notch-baseui",
+      "type": "registry:component",
+      "title": "Native Profile Notch",
+      "description": "A dynamic expanding notch component for displaying user profiles with smooth spring animations. (Base UI)",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "framer-motion",
+        "react"
+      ],
+      "files": [
+        {
+          "path": "components/native/baseui/native-profile-notch-baseui.tsx",
+          "type": "registry:component",
+          "target": "components/uitripled/native-profile-notch-baseui.tsx"
+        }
+      ],
+      "category": "native",
+      "subcategory": null
+    },
+    {
+      "name": "native-profile-notch-shadcnui",
+      "type": "registry:component",
+      "title": "Native Profile Notch",
+      "description": "A dynamic expanding notch component for displaying user profiles with smooth spring animations.",
+      "registryDependencies": [],
+      "dependencies": [
+        "framer-motion",
+        "react"
+      ],
+      "files": [
+        {
+          "path": "components/native/shadcnui/native-profile-notch-shadcnui.tsx",
+          "type": "registry:component",
+          "target": "components/uitripled/native-profile-notch-shadcnui.tsx"
+        }
+      ],
+      "category": "native",
+      "subcategory": null
+    },
+    {
       "name": "native-start-now",
       "type": "registry:component",
       "title": "Native Start Now",

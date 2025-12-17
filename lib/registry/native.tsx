@@ -168,6 +168,12 @@ import { SocialLoginButton } from "@/components/native/shadcnui/social-login-but
 import { NativeNestedList } from "@/components/native/shadcnui/native-nested-list-shadcnui";
 import { NativeNestedListDemo } from "@/components/native/shadcnui/demo/native-nested-list-demo";
 import { NativeNestedListBaseUI } from "@/components/native/baseui/native-nested-list-baseui";
+import { NativeProfileNotch } from "@/components/native/shadcnui/native-profile-notch-shadcnui";
+import {
+  NativeProfileNotchCustom,
+  NativeProfileNotchDefault,
+} from "@/components/native/shadcnui/demo/native-profile-notch-demo";
+import { NativeProfileNotch as NativeProfileNotchBaseUI } from "@/components/native/baseui/native-profile-notch-baseui";
 
 export const nativeComponents: Component[] = [
   {
@@ -2219,4 +2225,84 @@ export const nativeComponents: Component[] = [
     display: false,
     availableIn: ["baseui"],
   },
+  {
+    id: "native-profile-notch",
+    name: "Native Profile Notch",
+    description:
+      "A dynamic expanding notch component for displaying user profiles with smooth spring animations.",
+    category: "native",
+    tags: ["profile", "notch", "card", "expandable", "native", "animation"],
+    component: NativeProfileNotch,
+    variants: [
+      {
+        id: "default",
+        name: "Default",
+        description: "Standard profile notch",
+        component: NativeProfileNotchDefault,
+        code: `<NativeProfileNotch
+  imageSrc="https://github.com/shadcn.png"
+  name="Shadcn"
+  username="shadcn"
+>
+  <div className="grid grid-cols-2 gap-4 w-full">
+    <div className="flex flex-col items-center">
+      <span className="text-xs text-primary-foreground/40">Role</span>
+      <span className="text-sm font-medium">Maintainer</span>
+    </div>
+    <div className="flex flex-col items-center">
+      <span className="text-xs text-primary-foreground/40">Commits</span>
+      <span className="text-sm font-medium">1,240</span>
+    </div>
+  </div>
+</NativeProfileNotch>`,
+      },
+      {
+        id: "custom",
+        name: "Detailed",
+        description: "Profile notch with extra details",
+        component: NativeProfileNotchCustom,
+        code: `<NativeProfileNotch
+  imageSrc="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+  name="Sarah Chen"
+  username="sarahc_design"
+>
+  <div className="border-t border-primary-foreground/10 pt-4 mt-2">
+    <p className="text-sm text-primary-foreground/70 text-center italic">
+      "Designing experiences that matter."
+    </p>
+  </div>
+</NativeProfileNotch>`,
+      },
+    ],
+    codePath: "@/components/native/shadcnui/native-profile-notch-shadcnui.tsx",
+    duration: "300ms",
+    easing: "spring",
+    display: true,
+    availableIn: ["shadcnui", "baseui"],
+  },
+  {
+    id: "native-profile-notch-shadcnui",
+    name: "Native Profile Notch",
+    description:
+      "A dynamic expanding notch component for displaying user profiles with smooth spring animations.",
+    category: "native",
+    tags: [],
+    component: NativeProfileNotch,
+    codePath: "@/components/native/shadcnui/native-profile-notch-shadcnui.tsx",
+    display: false,
+    availableIn: ["shadcnui"],
+  },
+  {
+    id: "native-profile-notch-baseui",
+    name: "Native Profile Notch",
+    description:
+      "A dynamic expanding notch component for displaying user profiles with smooth spring animations.",
+    category: "native",
+    tags: [],
+    component: NativeProfileNotchBaseUI,
+    codePath: "@/components/native/baseui/native-profile-notch-baseui.tsx",
+    display: false,
+    availableIn: ["baseui"],
+  },
+
 ];

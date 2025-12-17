@@ -2,11 +2,11 @@
 
 > Production-ready UI components, blocks, and pages built on top of shadcn/ui and Framer Motion.
 
-**Last Updated:** 2025-12-16T12:39:51.833Z
+**Last Updated:** 2025-12-17T19:16:10.566Z
 
 ## Table of Contents
 
-- Components (161 items)
+- Components (164 items)
 - Blocks (73 items)
 - Pages (23 items)
 - UI Elements (19 items)
@@ -180,6 +180,9 @@
 - [Native Notification Bell](https://ui.tripled.work/components/native-notification-bell-baseui): Animated notification bell with badge and ringing effect. (Base UI)
 - [Native Notification Bell](https://ui.tripled.work/components/native-notification-bell-carbon): Animated notification bell with badge and ringing effect.
 - [Native Notification Bell](https://ui.tripled.work/components/native-notification-bell-shadcnui): Animated notification bell with badge and ringing effect.
+- [Native Profile Notch](https://ui.tripled.work/components/native-profile-notch): A dynamic expanding notch component for displaying user profiles with smooth spring animations.
+- [Native Profile Notch](https://ui.tripled.work/components/native-profile-notch-baseui): A dynamic expanding notch component for displaying user profiles with smooth spring animations. (Base UI)
+- [Native Profile Notch](https://ui.tripled.work/components/native-profile-notch-shadcnui): A dynamic expanding notch component for displaying user profiles with smooth spring animations.
 - [Native Start Now](https://ui.tripled.work/components/native-start-now): Animated button with sparkle effects, loading states, and smooth transitions for starting actions.
 - [Native Start Now](https://ui.tripled.work/components/native-start-now-baseui): Animated button with sparkle effects, loading states, and smooth transitions for starting actions. (Base UI)
 - [Native Start Now](https://ui.tripled.work/components/native-start-now-shadcnui): Animated button with sparkle effects, loading states, and smooth transitions for starting actions.
