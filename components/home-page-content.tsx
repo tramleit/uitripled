@@ -13,18 +13,13 @@ import { GithubStarButton } from "@/components/github-star-button";
 import GradientOverlay from "@/components/gradiant-overlay";
 import { AnimatedDialog } from "@/components/modals/animated-dialog";
 import { BottomModal } from "@/components/modals/bottom-modal";
+import { NativeAvatarWithName } from "@/components/native/shadcnui/native-avatar-with-name-shadcnui";
 import { AnimatedProfileMenu } from "@/components/navigation/animated-profile-menu";
 import { BrowseFolder } from "@/components/sections/shadcnui/browse-folder";
 import { CurrencyConverterCard } from "@/components/sections/shadcnui/currency-converter-card";
 import { ProjectsBlock } from "@/components/sections/shadcnui/projects-block";
 import { TweetsSlider } from "@/components/sections/tweets-slider";
 import { Button } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { motion } from "framer-motion";
 import { ArrowRight, Plus, Star } from "lucide-react";
 import Image from "next/image";
@@ -128,41 +123,33 @@ export default function HomePageContent() {
               Sponsored by
             </span>
             <div className="flex items-center gap-3">
-              <TooltipProvider delayDuration={0}>
-                {SPONSORS.map((sponsor, index) => (
-                  <Tooltip key={sponsor.username}>
-                    <TooltipTrigger asChild>
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.5 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{
-                          type: "spring",
-                          stiffness: 260,
-                          damping: 20,
-                          delay: 0.1 + index * 0.1,
-                        }}
-                      >
-                        <Link
-                          href={`https://github.com/${sponsor.username}`}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="relative block h-10 w-10 overflow-hidden rounded-full border border-border transition-transform hover:scale-105"
-                        >
-                          <Image
-                            src={`https://github.com/${sponsor.username}.png`}
-                            alt={sponsor.username}
-                            fill
-                            className="object-cover"
-                          />
-                        </Link>
-                      </motion.div>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>{sponsor.username}</p>
-                    </TooltipContent>
-                  </Tooltip>
-                ))}
-              </TooltipProvider>
+              {SPONSORS.map((sponsor, index) => (
+                <motion.div
+                  key={sponsor.username}
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 20,
+                    delay: 0.1 + index * 0.1,
+                  }}
+                >
+                  <Link
+                    href={`https://github.com/${sponsor.username}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-2"
+                  >
+                    <NativeAvatarWithName
+                      src={`https://github.com/${sponsor.username}.png`}
+                      name={sponsor.username}
+                      size="sm"
+                      direction="top"
+                    />
+                  </Link>
+                </motion.div>
+              ))}
 
               <Link
                 href="https://github.com/sponsors/moumen-soliman"
