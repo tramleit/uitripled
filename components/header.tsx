@@ -1,5 +1,6 @@
 "use client";
 
+import { ChristmasDecoration } from "@/components/christmas-decoration";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { useUILibrary } from "@/components/ui-library-provider";
 import {
@@ -45,7 +46,7 @@ export function Header() {
         transition={{ duration: 0.3 }}
         className="sticky top-0 z-50 border-border bg-background/80 backdrop-blur-lg"
       >
-        <div className="container-fluid md:max-w-[95rem] flex h-16 px-6 items-center justify-between">
+        <div className="container-fluid md:max-w-[95rem] mx-auto flex h-16 px-6 items-center justify-between">
           <div className="flex items-center gap-3 relative">
             <Link
               href="/"
@@ -65,6 +66,8 @@ export function Header() {
                 height={70}
                 className="hidden dark:block"
               />
+              <ChristmasDecoration className="-top-2 left-0 z-10" />
+
               {/* <Badge
                 variant="outline"
                 className="text-[xs] backdrop-blur-sm border border-border bg-black/10 rounded-sm absolute top-0 left-[76px]"
