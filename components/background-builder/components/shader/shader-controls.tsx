@@ -322,11 +322,13 @@ export function ShaderControls({
           <SelectValue placeholder="Select Shader" />
           </SelectTrigger>
           <SelectContent>
-            {Object.entries(SHADER_INFO).map(([key, info]) => (
-              <SelectItem key={key} value={key}>
-                {info.name}
-              </SelectItem>
-            ))}
+            {Object.entries(SHADER_INFO)
+              .filter(([key]) => key !== "waves")
+              .map(([key, info]) => (
+                <SelectItem key={key} value={key}>
+                  {info.name}
+                </SelectItem>
+              ))}
           </SelectContent>
         </Select>
       </div>
