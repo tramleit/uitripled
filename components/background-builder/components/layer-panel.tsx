@@ -230,29 +230,39 @@ export function LayerPanel({
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-2">
                 <Label className="text-xs">Color</Label>
-                <Input
-                  type="text"
-                  value={activeLayer.color}
-                  onChange={(e) =>
-                    onUpdateLayer(activeLayer.id, { color: e.target.value })
-                  }
-                  className="h-7 font-mono text-[10px]"
-                />
+                <div className="flex items-center gap-2">
+                  <Input
+                    type="color"
+                    value={activeLayer.color}
+                    onChange={(e) =>
+                      onUpdateLayer(activeLayer.id, { color: e.target.value })
+                    }
+                    className="h-8 w-8 p-0 cursor-pointer border-0 rounded-md overflow-hidden"
+                  />
+                  <span className="text-[10px] font-mono text-muted-foreground">
+                    {activeLayer.color}
+                  </span>
+                </div>
               </div>
               {(activeLayer.type === "linear" ||
                 activeLayer.type === "mesh") && (
                 <div className="space-y-2">
                   <Label className="text-xs">Secondary</Label>
-                  <Input
-                    type="text"
-                    value={activeLayer.secondaryColor || "transparent"}
-                    onChange={(e) =>
-                      onUpdateLayer(activeLayer.id, {
-                        secondaryColor: e.target.value,
-                      })
-                    }
-                    className="h-7 font-mono text-[10px]"
-                  />
+                  <div className="flex items-center gap-2">
+                    <Input
+                      type="color"
+                      value={activeLayer.secondaryColor || "#000000"}
+                      onChange={(e) =>
+                        onUpdateLayer(activeLayer.id, {
+                          secondaryColor: e.target.value,
+                        })
+                      }
+                      className="h-8 w-8 p-0 cursor-pointer border-0 rounded-md overflow-hidden"
+                    />
+                    <span className="text-[10px] font-mono text-muted-foreground">
+                      {activeLayer.secondaryColor || "transparent"}
+                    </span>
+                  </div>
                 </div>
               )}
             </div>
