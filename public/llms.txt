@@ -2,11 +2,11 @@
 
 > Production-ready UI components, blocks, and pages built on top of shadcn/ui and Framer Motion.
 
-**Last Updated:** 2025-12-24T16:13:11.305Z
+**Last Updated:** 2025-12-24T20:26:34.025Z
 
 ## Table of Contents
 
-- Components (164 items)
+- Components (167 items)
 - Blocks (73 items)
 - Pages (23 items)
 - UI Elements (19 items)
@@ -163,6 +163,9 @@
 - [Native Image Checkbox](https://ui.tripled.work/components/native-image-checkbox-baseui): Image checkbox component with grayscale filter and checkmark indicator. (Base UI)
 - [Native Image Checkbox](https://ui.tripled.work/components/native-image-checkbox-carbon): Image checkbox component with grayscale filter and checkmark indicator.
 - [Native Image Checkbox](https://ui.tripled.work/components/native-image-checkbox-shadcnui): Image checkbox component with grayscale filter and checkmark indicator.
+- [Native Likes Counter](https://ui.tripled.work/components/native-likes-counter): An interactive likes counter with avatar stack, popup details, and smooth animations.
+- [Native Likes Counter](https://ui.tripled.work/components/native-likes-counter-baseui): An interactive likes counter with avatar stack, popup details, and smooth animations. (Base UI)
+- [Native Likes Counter](https://ui.tripled.work/components/native-likes-counter-shadcnui): An interactive likes counter with avatar stack, popup details, and smooth animations.
 - [Native Liquid Button](https://ui.tripled.work/components/native-liquid-button): Button with animated liquid fill effect, progress tracking, and multiple visual variants for engaging interactions.
 - [Native Liquid Button](https://ui.tripled.work/components/native-liquid-button-baseui): Button with animated liquid fill effect, progress tracking, and multiple visual variants for engaging interactions. (Base UI)
 - [Native Liquid Button](https://ui.tripled.work/components/native-liquid-button-shadcnui): Button with animated liquid fill effect, progress tracking, and multiple visual variants for engaging interactions.

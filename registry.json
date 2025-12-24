@@ -3984,6 +3984,48 @@
       "subcategory": null
     },
     {
+      "name": "native-likes-counter-baseui",
+      "type": "registry:component",
+      "title": "Native Likes Counter",
+      "description": "An interactive likes counter with avatar stack, popup details, and smooth animations. (Base UI)",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "framer-motion",
+        "react"
+      ],
+      "files": [
+        {
+          "path": "components/native/baseui/native-likes-counter-baseui.tsx",
+          "type": "registry:component",
+          "target": "components/uitripled/native-likes-counter-baseui.tsx"
+        }
+      ],
+      "category": "native",
+      "subcategory": null
+    },
+    {
+      "name": "native-likes-counter-shadcnui",
+      "type": "registry:component",
+      "title": "Native Likes Counter",
+      "description": "An interactive likes counter with avatar stack, popup details, and smooth animations.",
+      "registryDependencies": [],
+      "dependencies": [
+        "framer-motion",
+        "react"
+      ],
+      "files": [
+        {
+          "path": "components/native/shadcnui/native-likes-counter-shadcnui.tsx",
+          "type": "registry:component",
+          "target": "components/uitripled/native-likes-counter-shadcnui.tsx"
+        }
+      ],
+      "category": "native",
+      "subcategory": null
+    },
+    {
       "name": "native-liquid-button",
       "type": "registry:component",
       "title": "Native Liquid Button",

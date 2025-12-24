@@ -1,6 +1,6 @@
 ---
-title: Native Dialog
-description: A glassmorphism-styled dialog component with backdrop blur and smooth animations, inspired by native OS modals.
+title: Native Likes Counter
+description: An interactive likes counter with avatar stack, popup details, and smooth animations.
 component: true
 ---
 
@@ -9,11 +9,11 @@ component: true
 
 import * as React from "react"
 
-import { NativeDialog } from "@/components/native/shadcnui/native-likes-counter-shadcnui.tsx"
+import { NativeLikesCounter } from "components/native/shadcnui/native-likes-counter-shadcnui.tsx"
 
-export function NativeDialogDemo() {
+export function NativeLikesCounterDemo() {
   return (
-    <NativeDialog />
+    <NativeLikesCounter />
   )
 }
 ```
@@ -29,7 +29,7 @@ export function NativeDialogDemo() {
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add @uitripled/native-dialog
+npx shadcn@latest add @uitripled/native-likes-counter
 ```
 
 </TabsContent>
@@ -40,7 +40,7 @@ npx shadcn@latest add @uitripled/native-dialog
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="native-dialog" title="@/components/native/shadcnui/native-likes-counter-shadcnui.tsx" />
+<ComponentSource name="native-likes-counter" title="components/native/shadcnui/native-likes-counter-shadcnui.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -53,17 +53,17 @@ npx shadcn@latest add @uitripled/native-dialog
 ## Usage
 
 ```tsx showLineNumbers
-import { NativeDialog } from "@/components/native/shadcnui/native-likes-counter-shadcnui.tsx"
+import { NativeLikesCounter } from "components/native/shadcnui/native-likes-counter-shadcnui.tsx"
 ```
 
 ```tsx showLineNumbers
-<NativeDialog />
+<NativeLikesCounter />
 ```
 
 ## Component Details
 
 - **Category**: native
-- **Tags**: dialog, modal, native, glassmorphism, overlay, radix
+- **Tags**: likes, counter, avatar, social, interaction, animation, popup
 
 ### Technical Specifications
 
@@ -101,11 +101,11 @@ The component follows accessibility best practices:
 
 import * as React from "react"
 
-import { NativeDialog } from "@/components/native/shadcnui/native-likes-counter-shadcnui.tsx"
+import { NativeLikesCounter } from "components/native/shadcnui/native-likes-counter-shadcnui.tsx"
 
 export function BasicExample() {
   return (
-    <NativeDialog />
+    <NativeLikesCounter />
   )
 }
 ```

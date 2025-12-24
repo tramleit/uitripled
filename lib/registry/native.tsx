@@ -164,6 +164,15 @@ import { NativeStartNow } from "@/components/native/shadcnui/native-start-now-sh
 import { NativeTabs } from "@/components/native/shadcnui/native-tabs-shadcnui";
 import { NativeTooltip } from "@/components/native/shadcnui/native-tooltip-shadcnui";
 import { SocialLoginButton } from "@/components/native/shadcnui/social-login-button-shadcnui";
+import { NativeLikesCounter } from "@/components/native/shadcnui/native-likes-counter-shadcnui";
+import {
+  NativeLikesCounterDefault,
+  NativeLikesCounterSubtle,
+  NativeLikesCounterOutline,
+  NativeLikesCounterGhost,
+  NativeLikesCounterSizes,
+  NativeLikesCounterInteractive,
+} from "@/components/native/shadcnui/demo/native-likes-counter-demo";
 
 import { NativeNestedListBaseUI } from "@/components/native/baseui/native-nested-list-baseui";
 import { NativeProfileNotch as NativeProfileNotchBaseUI } from "@/components/native/baseui/native-profile-notch-baseui";
@@ -209,6 +218,84 @@ export const nativeComponents: Component[] = [
       },
     ],
     codePath: "@/components/native/shadcnui/native-tooltip-shadcnui.tsx",
+    duration: "200ms",
+    easing: "spring",
+    display: true,
+    availableIn: ["shadcnui", "baseui"],
+  },
+  {
+    id: "native-likes-counter",
+    name: "Native Likes Counter",
+    description: "An interactive likes counter with avatar stack, popup details, and smooth animations.",
+    category: "native",
+    tags: ["likes", "counter", "avatar", "social", "interaction", "animation", "popup"],
+    component: NativeLikesCounter,
+    variants: [
+      {
+        id: "default",
+        name: "Default",
+        description: "Standard usage with avatar stack and popup",
+        component: NativeLikesCounterDefault,
+        code: `<NativeLikesCounter
+  count={128}
+  users={USERS}
+/>`,
+      },
+      {
+        id: "subtle",
+        name: "Subtle",
+        description: "Subtle variant without background",
+        component: NativeLikesCounterSubtle,
+        code: `<NativeLikesCounter
+  count={42}
+  variant="subtle"
+/>`,
+      },
+      {
+        id: "outline",
+        name: "Outline",
+        description: "Bordered variant with outline",
+        component: NativeLikesCounterOutline,
+        code: `<NativeLikesCounter
+  count={89}
+  variant="outline"
+  liked
+/>`,
+      },
+      {
+        id: "ghost",
+        name: "Ghost",
+        description: "Minimalist version with transparent background",
+        component: NativeLikesCounterGhost,
+        code: `<NativeLikesCounter
+  count={256}
+  variant="ghost"
+/>`,
+      },
+      {
+        id: "sizes",
+        name: "Sizes",
+        description: "Different sizes for various layouts",
+        component: NativeLikesCounterSizes,
+        code: `<NativeLikesCounter size="sm" count={12} />
+<NativeLikesCounter size="default" count={128} />
+<NativeLikesCounter size="lg" count={1024} />`,
+      },
+      {
+        id: "interactive",
+        name: "Interactive",
+        description: "Showcase onLike and onLoadMore functionality",
+        component: NativeLikesCounterInteractive,
+        code: `<NativeLikesCounter
+  count={150}
+  users={USERS}
+  hasMore={true}
+  onLoadMore={handleLoadMore}
+  onLike={() => console.log("Liked!")}
+/>`,
+      },
+    ],
+    codePath: "@/components/native/shadcnui/native-likes-counter-shadcnui.tsx",
     duration: "200ms",
     easing: "spring",
     display: true,
@@ -2302,6 +2389,28 @@ export const nativeComponents: Component[] = [
     tags: [],
     component: NativeProfileNotchBaseUI,
     codePath: "@/components/native/baseui/native-profile-notch-baseui.tsx",
+    display: false,
+    availableIn: ["baseui"],
+  },
+  {
+    id: "native-likes-counter-shadcnui",
+    name: "Native Likes Counter",
+    description: "An interactive likes counter with avatar stack, popup details, and smooth animations.",
+    category: "native",
+    tags: [],
+    component: NativeLikesCounterDefault,
+    codePath: "@/components/native/shadcnui/native-likes-counter-shadcnui.tsx",
+    display: false,
+    availableIn: ["shadcnui"],
+  },
+  {
+    id: "native-likes-counter-baseui",
+    name: "Native Likes Counter",
+    description: "An interactive likes counter with avatar stack, popup details, and smooth animations.",
+    category: "native",
+    tags: [],
+    component: NativeLikesCounterDefault,
+    codePath: "@/components/native/baseui/native-likes-counter-baseui.tsx",
     display: false,
     availableIn: ["baseui"],
   },

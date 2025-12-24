@@ -1,6 +1,6 @@
 ---
-title: Native Dialog
-description: A glassmorphism-styled dialog component with backdrop blur and smooth animations, inspired by native OS modals.
+title: Native Likes Counter
+description: An interactive likes counter with avatar stack, popup details, and smooth animations.
 component: true
 ---
 
@@ -9,11 +9,11 @@ component: true
 
 import * as React from "react"
 
-import { NativeDialog } from "@/components/native/shadcnui/native-likes-counter-shadcnui.tsx"
+import { NativeLikesCounter } from "@/components/native/baseui/native-likes-counter-baseui.tsx"
 
-export function NativeDialogDemo() {
+export function NativeLikesCounterDemo() {
   return (
-    <NativeDialog />
+    <NativeLikesCounter />
   )
 }
 ```
@@ -29,7 +29,7 @@ export function NativeDialogDemo() {
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add @uitripled/native-dialog
+npx shadcn@latest add @uitripled/native-likes-counter-baseui
 ```
 
 </TabsContent>
@@ -38,9 +38,15 @@ npx shadcn@latest add @uitripled/native-dialog
 
 <Steps>
 
+<Step>Add the required components to your project.</Step>
+
+The `Native Likes Counter` component uses the following components. Make sure you have them installed in your project.
+
+- button
+
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="native-dialog" title="@/components/native/shadcnui/native-likes-counter-shadcnui.tsx" />
+<ComponentSource name="native-likes-counter-baseui" title="@/components/native/baseui/native-likes-counter-baseui.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -53,23 +59,26 @@ npx shadcn@latest add @uitripled/native-dialog
 ## Usage
 
 ```tsx showLineNumbers
-import { NativeDialog } from "@/components/native/shadcnui/native-likes-counter-shadcnui.tsx"
+import { NativeLikesCounter } from "@/components/native/baseui/native-likes-counter-baseui.tsx"
 ```
 
 ```tsx showLineNumbers
-<NativeDialog />
+<NativeLikesCounter />
 ```
 
 ## Component Details
 
 - **Category**: native
-- **Tags**: dialog, modal, native, glassmorphism, overlay, radix
+
 
 ### Technical Specifications
 
 **Dependencies**:
 - `framer-motion`
 - `react`
+
+**UI Components**:
+- button
 
 This component uses **Framer Motion** for animations and motion effects.
 
@@ -101,11 +110,11 @@ The component follows accessibility best practices:
 
 import * as React from "react"
 
-import { NativeDialog } from "@/components/native/shadcnui/native-likes-counter-shadcnui.tsx"
+import { NativeLikesCounter } from "@/components/native/baseui/native-likes-counter-baseui.tsx"
 
 export function BasicExample() {
   return (
-    <NativeDialog />
+    <NativeLikesCounter />
   )
 }
 ```
@@ -123,4 +132,4 @@ This component is part of the UI TripleD component library, a collection of prod
 
 ## Related Components
 
-No related components.
+- [button](/docs/components/button)
