@@ -33,11 +33,11 @@ export interface NativeProfileNotchProps {
    */
   className?: string;
   /**
-    * Variant of the notch.
-    * "default": expands and pushes content.
-    * "overlay": expands over content (absolute positioning).
-    * @default "default"
-    */
+   * Variant of the notch.
+   * "default": expands and pushes content.
+   * "overlay": expands over content (absolute positioning).
+   * @default "default"
+   */
   variant?: "default" | "overlay";
 }
 
@@ -197,7 +197,7 @@ export function NativeProfileNotch({
                   <button
                     className="w-full py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm hover:bg-primary/90 transition-colors"
                     onClick={(e) => {
-                       e.stopPropagation();
+                      e.stopPropagation();
                     }}
                   >
                     View Full Profile

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import { add } from "../src/add.js";
 import kleur from "kleur";
+import { add } from "../src/add.js";
 
 const [, , command, component, ...flags] = process.argv;
 
@@ -20,7 +20,7 @@ async function main() {
     console.log("Examples:");
     console.log(`  ${kleur.dim("npx uitripled add animated-checkbox")}`);
     console.log(
-      `  ${kleur.dim("npx uitripled add animated-button --overwrite")}`,
+      `  ${kleur.dim("npx uitripled add animated-button --overwrite")}`
     );
   } else {
     console.error(kleur.red(`Unknown command: ${command}`));

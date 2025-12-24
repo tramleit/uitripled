@@ -7,17 +7,33 @@ export function NativeButtonDefault() {
 }
 
 export function NativeButtonGlow() {
-  return <NativeButton glow className="uppercase">Glow Effect</NativeButton>;
+  return (
+    <NativeButton glow className="uppercase">
+      Glow Effect
+    </NativeButton>
+  );
 }
 
 export function NativeButtonOutline() {
-  return <NativeButton variant="outline" className="uppercase">Learn More</NativeButton>;
+  return (
+    <NativeButton variant="outline" className="uppercase">
+      Learn More
+    </NativeButton>
+  );
 }
 
 export function NativeButtonLoading() {
-  return <NativeButton loading className="uppercase">Processing...</NativeButton>;
+  return (
+    <NativeButton loading className="uppercase">
+      Processing...
+    </NativeButton>
+  );
 }
 
 export function NativeButtonDisabled() {
-  return <NativeButton disabled className="uppercase">Disabled</NativeButton>;
+  return (
+    <NativeButton disabled className="uppercase">
+      Disabled
+    </NativeButton>
+  );
 }

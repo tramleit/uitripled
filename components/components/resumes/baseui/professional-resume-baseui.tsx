@@ -3,7 +3,6 @@
 import { NativeButton as Button } from "@/components/native/baseui/native-button-baseui";
 import { motion, Variants } from "framer-motion";
 import { Download, Globe, Linkedin, Mail, MapPin, Phone } from "lucide-react";
-import * as React from "react";
 
 const RESUME_DATA = {
   personalInfo: {

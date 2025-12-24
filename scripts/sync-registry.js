@@ -432,7 +432,11 @@ function createRegistryEntry(componentData, uiLibrary = null) {
   }
 
   // Add the rest of the fields
-  entry.registryDependencies = getRegistryDependencies(entryPath, category, uiLibrary);
+  entry.registryDependencies = getRegistryDependencies(
+    entryPath,
+    category,
+    uiLibrary
+  );
   entry.dependencies = getDependencies(entryPath, uiLibrary);
 
   const registryPath = convertToRegistryPath(entryPath);
@@ -575,7 +579,9 @@ function syncRegistry() {
       "utf-8"
     );
 
-    console.log(`✅ Registry synced! Added: ${added}, Updated: ${updated}, Removed: ${removed}`);
+    console.log(
+      `✅ Registry synced! Added: ${added}, Updated: ${updated}, Removed: ${removed}`
+    );
     console.log(`📊 Total items in registry: ${registry.items.length}`);
   } catch (error) {
     console.error("❌ Error syncing registry:", error);

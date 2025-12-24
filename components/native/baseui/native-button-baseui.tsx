@@ -107,7 +107,7 @@ const NativeButton = React.forwardRef<HTMLButtonElement, NativeButtonProps>(
           )}
           {buttonContent}
         </a>
-      )
+      );
     }
 
     return (
@@ -124,7 +124,7 @@ const NativeButton = React.forwardRef<HTMLButtonElement, NativeButtonProps>(
         )}
         {buttonContent}
       </Button>
-    )
+    );
   }
 );
 NativeButton.displayName = "NativeButton";

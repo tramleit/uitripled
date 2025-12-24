@@ -1,10 +1,18 @@
-"use client"
+"use client";
 
 import {
   type ListItem,
   NativeNestedList,
-} from "@/components/native/shadcnui/native-nested-list-shadcnui"
-import { File, Folder, FolderOpen, Globe, Image, MoreHorizontal, MousePointerClick } from "lucide-react"
+} from "@/components/native/shadcnui/native-nested-list-shadcnui";
+import {
+  File,
+  Folder,
+  FolderOpen,
+  Globe,
+  Image,
+  MoreHorizontal,
+  MousePointerClick,
+} from "lucide-react";
 
 const items: ListItem[] = [
   {
@@ -58,29 +66,29 @@ const items: ListItem[] = [
     label: "Settings",
     icon: <MoreHorizontal className="h-4 w-4 text-gray-500" />,
     children: [
-        {
-            id: "3-1",
-            label: "Google",
-            icon: <Globe className="h-4 w-4 text-blue-500" />,
-            href: "https://google.com",
+      {
+        id: "3-1",
+        label: "Google",
+        icon: <Globe className="h-4 w-4 text-blue-500" />,
+        href: "https://google.com",
+      },
+      {
+        id: "3-2",
+        label: "Click Me",
+        icon: <MousePointerClick className="h-4 w-4 text-green-500" />,
+        onClick: (e) => {
+          e.stopPropagation();
+          alert("Clicked!");
         },
-        {
-            id: "3-2",
-            label: "Click Me",
-            icon: <MousePointerClick className="h-4 w-4 text-green-500" />,
-            onClick: (e) => {
-                e.stopPropagation()
-                alert("Clicked!")
-            },
-        }
-    ]
+      },
+    ],
   },
-]
+];
 
 export function NativeNestedListDemo() {
   return (
     <div className="w-full max-w-sm border rounded-lg p-4 bg-background">
       <NativeNestedList items={items} />
     </div>
-  )
+  );
 }

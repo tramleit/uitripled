@@ -1,8 +1,8 @@
-import fetch from "node-fetch";
 import fs from "fs/promises";
+import kleur from "kleur";
+import fetch from "node-fetch";
 import path from "path";
 import { fileURLToPath } from "url";
-import kleur from "kleur";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -12,7 +12,7 @@ export async function add(component, options = {}) {
   if (!component) {
     console.error(kleur.red("Please specify a component name"));
     console.error(
-      kleur.dim(`Run ${kleur.yellow("npx uitripled")} for usage information`),
+      kleur.dim(`Run ${kleur.yellow("npx uitripled")} for usage information`)
     );
     process.exit(1);
   }
@@ -28,14 +28,14 @@ export async function add(component, options = {}) {
     if (!res.ok) {
       if (res.status === 404) {
         console.error(
-          kleur.red(`Component "${component}" not found in registry`),
+          kleur.red(`Component "${component}" not found in registry`)
         );
         console.error(
-          kleur.dim("Check available components at https://ui.tripled.work"),
+          kleur.dim("Check available components at https://ui.tripled.work")
         );
       } else {
         console.error(
-          kleur.red(`Failed to fetch component: ${res.statusText}`),
+          kleur.red(`Failed to fetch component: ${res.statusText}`)
         );
       }
       process.exit(1);
@@ -45,7 +45,7 @@ export async function add(component, options = {}) {
 
     if (!data.files || !Array.isArray(data.files) || data.files.length === 0) {
       console.error(
-        kleur.red(`Component "${component}" has no files to install`),
+        kleur.red(`Component "${component}" has no files to install`)
       );
       process.exit(1);
     }
@@ -56,7 +56,7 @@ export async function add(component, options = {}) {
       console.log(kleur.yellow("Registry dependencies:"));
       data.registryDependencies.forEach((dep) => {
         console.log(
-          kleur.dim(`  - ${dep} (install with: npx shadcn@latest add ${dep})`),
+          kleur.dim(`  - ${dep} (install with: npx shadcn@latest add ${dep})`)
         );
       });
       console.log();
@@ -78,11 +78,7 @@ export async function add(component, options = {}) {
     }
 
     // Determine base path using priority order
-    const priorityPaths = [
-      "src/components",
-      "app/components",
-      "components",
-    ];
+    const priorityPaths = ["src/components", "app/components", "components"];
 
     let basePath = "components"; // default fallback
     for (const priorityPath of priorityPaths) {
@@ -132,8 +128,8 @@ export async function add(component, options = {}) {
         if (!overwrite) {
           console.log(
             kleur.yellow(
-              `⊘ Skipped ${installPath} (already exists, use --overwrite to replace)`,
-            ),
+              `⊘ Skipped ${installPath} (already exists, use --overwrite to replace)`
+            )
           );
           skippedCount++;
           continue;
@@ -154,7 +150,7 @@ export async function add(component, options = {}) {
       } catch (error) {
         console.error(
           kleur.red(`✗ Failed to install ${installPath}:`),
-          error.message,
+          error.message
         );
       }
     }
@@ -162,12 +158,12 @@ export async function add(component, options = {}) {
     console.log();
     if (installedCount > 0) {
       console.log(
-        kleur.green(`Successfully installed ${installedCount} file(s)`),
+        kleur.green(`Successfully installed ${installedCount} file(s)`)
       );
     }
     if (skippedCount > 0) {
       console.log(
-        kleur.yellow(`Skipped ${skippedCount} file(s) (already exist)`),
+        kleur.yellow(`Skipped ${skippedCount} file(s) (already exist)`)
       );
     }
   } catch (error) {

@@ -11,7 +11,6 @@ import {
   MapPin,
   Twitter,
 } from "lucide-react";
-import * as React from "react";
 
 const RESUME_DATA = {
   profile: {
@@ -82,9 +81,7 @@ const RESUME_DATA = {
 };
 
 function Separator({ className }: { className?: string }) {
-  return (
-    <div className={`w-full h-[1px] ${className}`} role="separator" />
-  );
+  return <div className={`w-full h-[1px] ${className}`} role="separator" />;
 }
 
 export function MinimalResumeBaseUI() {
@@ -119,8 +116,8 @@ export function MinimalResumeBaseUI() {
               <Avatar.Root
                 className={`flex h-16 w-16 shrink-0 overflow-hidden rounded-full border border-gray-200 dark:border-zinc-700 bg-gradient-to-tr ${RESUME_DATA.profile.avatarGradient}`}
               >
-                  {/* Using Fallback/div as there is no image but we want to use the primitive */}
-                  <Avatar.Fallback className="flex h-full w-full items-center justify-center rounded-full bg-transparent" />
+                {/* Using Fallback/div as there is no image but we want to use the primitive */}
+                <Avatar.Fallback className="flex h-full w-full items-center justify-center rounded-full bg-transparent" />
               </Avatar.Root>
 
               <div>

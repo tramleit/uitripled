@@ -1,18 +1,17 @@
 "use client";
 
-import { Star, X } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Star, X } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const GITHUB_REPO = "moumen-soliman/uitripled";
 const STORAGE_KEY = "hide-github-star-reminder-timestamp";
@@ -63,7 +62,8 @@ export function StarUsSideReminder() {
             Love UI TripleD?
           </CardTitle>
           <CardDescription className="my-5">
-            Support the project by starring it on GitHub it really helps us grow and keep building better UI tools for you.
+            Support the project by starring it on GitHub it really helps us grow
+            and keep building better UI tools for you.
           </CardDescription>
         </CardHeader>
         <CardFooter>

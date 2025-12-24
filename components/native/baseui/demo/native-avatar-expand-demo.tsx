@@ -5,7 +5,10 @@ import { NativeAvatarExpand } from "@/components/native/shadcnui/native-avatar-e
 export function NativeAvatarExpandDefault() {
   return (
     <div className="flex items-center justify-center p-4">
-      <NativeAvatarExpand src="https://iimydr2b8o.ufs.sh/f/Zqn6AViLMoTtoUjLg4dAryGEidskK72wBCQA6DNcZH4Xh5b8" name="John Doe" />
+      <NativeAvatarExpand
+        src="https://iimydr2b8o.ufs.sh/f/Zqn6AViLMoTtoUjLg4dAryGEidskK72wBCQA6DNcZH4Xh5b8"
+        name="John Doe"
+      />
     </div>
   );
 }

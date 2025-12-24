@@ -165,15 +165,15 @@ import { NativeTabs } from "@/components/native/shadcnui/native-tabs-shadcnui";
 import { NativeTooltip } from "@/components/native/shadcnui/native-tooltip-shadcnui";
 import { SocialLoginButton } from "@/components/native/shadcnui/social-login-button-shadcnui";
 
-import { NativeNestedList } from "@/components/native/shadcnui/native-nested-list-shadcnui";
-import { NativeNestedListDemo } from "@/components/native/shadcnui/demo/native-nested-list-demo";
 import { NativeNestedListBaseUI } from "@/components/native/baseui/native-nested-list-baseui";
-import { NativeProfileNotch } from "@/components/native/shadcnui/native-profile-notch-shadcnui";
-import {
-  NativeProfileNotchOverlay,
-  NativeProfileNotchDefault,
-} from "@/components/native/shadcnui/demo/native-profile-notch-demo";
 import { NativeProfileNotch as NativeProfileNotchBaseUI } from "@/components/native/baseui/native-profile-notch-baseui";
+import { NativeNestedListDemo } from "@/components/native/shadcnui/demo/native-nested-list-demo";
+import {
+  NativeProfileNotchDefault,
+  NativeProfileNotchOverlay,
+} from "@/components/native/shadcnui/demo/native-profile-notch-demo";
+import { NativeNestedList } from "@/components/native/shadcnui/native-nested-list-shadcnui";
+import { NativeProfileNotch } from "@/components/native/shadcnui/native-profile-notch-shadcnui";
 
 export const nativeComponents: Component[] = [
   {
@@ -2305,5 +2305,4 @@ export const nativeComponents: Component[] = [
     display: false,
     availableIn: ["baseui"],
   },
-
 ];

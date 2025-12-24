@@ -21,11 +21,14 @@ const NativeDialogTrigger = React.forwardRef<
           return React.cloneElement(children, {
             ...triggerProps,
             // @ts-ignore - Explicitly handling the merge
-             ...children.props,
-             className: cn(triggerProps.className, (children as any).props.className),
-             // Combined refs are handled by cloneElement if ref is present on children,
-             // but triggerProps also has a ref. React merge refs might be needed generally,
-             // but strictly Base UI render prop passes the necessary event handlers and ref.
+            ...children.props,
+            className: cn(
+              triggerProps.className,
+              (children as any).props.className
+            ),
+            // Combined refs are handled by cloneElement if ref is present on children,
+            // but triggerProps also has a ref. React merge refs might be needed generally,
+            // but strictly Base UI render prop passes the necessary event handlers and ref.
           });
         }}
       />

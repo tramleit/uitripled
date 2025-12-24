@@ -35,7 +35,6 @@ function StarButtonFallback() {
   );
 }
 
-
 const SPONSORS = [
   {
     username: "DavidHDev",

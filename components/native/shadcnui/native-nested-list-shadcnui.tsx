@@ -1,77 +1,77 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
-import { AnimatePresence, motion } from "framer-motion"
-import { ChevronRight } from "lucide-react"
-import { useState } from "react"
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronRight } from "lucide-react";
+import { useState } from "react";
 
 export interface ListItem {
   /**
    * Unique identifier for the list item
    */
-  id: string
+  id: string;
   /**
    * Display label for the list item
    */
-  label: string
+  label: string;
   /**
    * Optional icon component
    */
-  icon?: React.ReactNode
+  icon?: React.ReactNode;
   /**
    * Nested children items
    */
-  children?: ListItem[]
+  children?: ListItem[];
   /**
    * Additional metadata
    */
-  metadata?: Record<string, any>
+  metadata?: Record<string, any>;
   /**
    * Optional URL to navigate to
    */
-  href?: string
+  href?: string;
   /**
    * Optional click handler
    */
-  onClick?: (e: React.MouseEvent) => void
+  onClick?: (e: React.MouseEvent) => void;
 }
 
 // ... existing props interface ...
 export interface NativeNestedListProps {
-  items: ListItem[]
-  activeId?: string
-  onItemClick?: (item: ListItem) => void
-  size?: "sm" | "md" | "lg"
-  showExpandIcon?: boolean
-  defaultExpanded?: boolean
-  className?: string
-  indentSize?: number
+  items: ListItem[];
+  activeId?: string;
+  onItemClick?: (item: ListItem) => void;
+  size?: "sm" | "md" | "lg";
+  showExpandIcon?: boolean;
+  defaultExpanded?: boolean;
+  className?: string;
+  indentSize?: number;
 }
 
 const sizeVariants = {
   sm: "h-8 text-xs px-2",
   md: "h-10 text-sm px-3",
   lg: "h-12 text-base px-4",
-}
+};
 
 const iconSizeVariants = {
   sm: "h-3 w-3",
   md: "h-4 w-4",
   lg: "h-5 w-5",
-}
+};
 
 interface NestedItemProps {
-  item: ListItem
-  level: number
-  activeId?: string
-  onItemClick?: (item: ListItem) => void
-  size: "sm" | "md" | "lg"
-  showExpandIcon: boolean
-  defaultExpanded: boolean
-  indentSize: number
+  item: ListItem;
+  level: number;
+  activeId?: string;
+  onItemClick?: (item: ListItem) => void;
+  size: "sm" | "md" | "lg";
+  showExpandIcon: boolean;
+  defaultExpanded: boolean;
+  indentSize: number;
 }
 
 function NestedItem({
@@ -84,21 +84,21 @@ function NestedItem({
   defaultExpanded,
   indentSize,
 }: NestedItemProps) {
-  const [isExpanded, setIsExpanded] = useState(defaultExpanded)
-  const hasChildren = item.children && item.children.length > 0
-  const isActive = activeId === item.id
+  const [isExpanded, setIsExpanded] = useState(defaultExpanded);
+  const hasChildren = item.children && item.children.length > 0;
+  const isActive = activeId === item.id;
 
   const handleClick = (e: React.MouseEvent) => {
     if (hasChildren) {
-      e.preventDefault()
-      setIsExpanded(!isExpanded)
+      e.preventDefault();
+      setIsExpanded(!isExpanded);
     }
-    onItemClick?.(item)
-    item.onClick?.(e)
-  }
+    onItemClick?.(item);
+    item.onClick?.(e);
+  };
 
-  const Comp = item.href ? "a" : "span"
-  const props = item.href ? { href: item.href } : {}
+  const Comp = item.href ? "a" : "span";
+  const props = item.href ? { href: item.href } : {};
 
   return (
     <div>
@@ -124,7 +124,10 @@ function NestedItem({
         style={{ paddingLeft: `${level * indentSize}px` }}
         className="relative"
       >
-        <motion.div whileTap={{ scale: 0.98 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>
+        <motion.div
+          whileTap={{ scale: 0.98 }}
+          transition={{ type: "spring", stiffness: 400, damping: 17 }}
+        >
           <Button
             variant="ghost"
             size="default"
@@ -132,7 +135,7 @@ function NestedItem({
             className={cn(
               sizeVariants[size],
               "w-full justify-start gap-2 relative overflow-hidden rounded-md",
-              isActive && "font-medium bg-accent/30",
+              isActive && "font-medium bg-accent/30"
             )}
             onClick={handleClick}
           >
@@ -151,7 +154,9 @@ function NestedItem({
                   <ChevronRight className={iconSizeVariants[size]} />
                 </motion.div>
               )}
-              {showExpandIcon && !hasChildren && <div className={cn(iconSizeVariants[size], "flex-shrink-0")} />}
+              {showExpandIcon && !hasChildren && (
+                <div className={cn(iconSizeVariants[size], "flex-shrink-0")} />
+              )}
               {item.icon && (
                 <motion.div
                   className="flex-shrink-0"
@@ -219,7 +224,7 @@ function NestedItem({
         )}
       </AnimatePresence>
     </div>
-  )
+  );
 }
 
 export function NativeNestedList({
@@ -248,5 +253,5 @@ export function NativeNestedList({
         />
       ))}
     </div>
-  )
+  );
 }

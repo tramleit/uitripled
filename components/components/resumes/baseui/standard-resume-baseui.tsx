@@ -98,7 +98,10 @@ const RESUME_DATA = {
 
 function Separator({ className }: { className?: string }) {
   return (
-    <div className={`w-full h-[1px] bg-border/60 ${className}`} role="separator" />
+    <div
+      className={`w-full h-[1px] bg-border/60 ${className}`}
+      role="separator"
+    />
   );
 }
 
@@ -134,7 +137,9 @@ function Card({
   className?: string;
 }) {
   return (
-    <div className={`rounded-lg border bg-card text-card-foreground ${className}`}>
+    <div
+      className={`rounded-lg border bg-card text-card-foreground ${className}`}
+    >
       {children}
     </div>
   );

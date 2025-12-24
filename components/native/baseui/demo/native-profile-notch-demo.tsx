@@ -41,14 +41,16 @@ export function NativeProfileNotchOverlay() {
 
       {/* Background content to demonstrate overlay behavior */}
       <div className="flex flex-col gap-4 max-w-sm text-center z-0 px-4">
-        <h3 className="text-2xl font-bold text-foreground">Content Below Profile</h3>
+        <h3 className="text-2xl font-bold text-foreground">
+          Content Below Profile
+        </h3>
         <p className="text-muted-foreground">
-          This content stays in place when the profile expands because the notch uses absolute positioning.
-          Try clicking the profile above!
+          This content stays in place when the profile expands because the notch
+          uses absolute positioning. Try clicking the profile above!
         </p>
         <div className="grid grid-cols-2 gap-4 mt-4">
-           <div className="h-24 bg-muted/50 rounded-lg" />
-           <div className="h-24 bg-muted/50 rounded-lg" />
+          <div className="h-24 bg-muted/50 rounded-lg" />
+          <div className="h-24 bg-muted/50 rounded-lg" />
         </div>
       </div>
 

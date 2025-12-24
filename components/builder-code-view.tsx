@@ -1,5 +1,6 @@
 "use client";
 
+import { useUILibrary } from "@/components/ui-library-provider";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -27,7 +28,6 @@ import {
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { CodeBlock } from "./code-block";
-import { useUILibrary } from "@/components/ui-library-provider";
 
 type BuilderCodeViewProps = {
   pages: BuilderProjectPage[];
@@ -499,7 +499,9 @@ export function BuilderCodeView({ pages, activePageId }: BuilderCodeViewProps) {
           animationId: component.animationId,
           textContent: component.textContent ?? {},
         })),
-        code: pageCodeMap[page.id] || (await buildPageCode(page, pages, selectedLibrary)),
+        code:
+          pageCodeMap[page.id] ||
+          (await buildPageCode(page, pages, selectedLibrary)),
       }))
     );
 
@@ -509,7 +511,11 @@ export function BuilderCodeView({ pages, activePageId }: BuilderCodeViewProps) {
       slug: "home",
       components: [],
     };
-    const fallbackCode = await buildPageCode(fallbackPage, [fallbackPage], selectedLibrary);
+    const fallbackCode = await buildPageCode(
+      fallbackPage,
+      [fallbackPage],
+      selectedLibrary
+    );
 
     // Generate a short unique ID (5 characters) for the project if it doesn't exist
     const generateShortId = () => {
@@ -755,7 +761,11 @@ export function BuilderCodeView({ pages, activePageId }: BuilderCodeViewProps) {
           slug: "home",
           components: [],
         };
-        const code = await buildPageCode(fallbackPage, [fallbackPage], selectedLibrary);
+        const code = await buildPageCode(
+          fallbackPage,
+          [fallbackPage],
+          selectedLibrary
+        );
         setDisplayedCode(code);
       }
     }
