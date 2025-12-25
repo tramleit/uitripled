@@ -10,7 +10,7 @@ export type ShaderType =
   | "swirl"
   | "spiral";
 
-export const SHADER_INFO: Record<ShaderType, { name: string; description: string }> = {
+export const SHADER_INFO: Record<string, { name: string; description: string }> = {
   mesh: { name: "Mesh Gradient", description: "Flowing multi-color mesh" },
   liquid: { name: "Liquid Metal", description: "Metallic liquid effect" },
   waves: { name: "Waves", description: "Smooth wave patterns" },
@@ -23,7 +23,7 @@ export const SHADER_INFO: Record<ShaderType, { name: string; description: string
   spiral: { name: "Spiral", description: "Hypnotic spiral pattern" },
 };
 
-export const COMPONENT_MAP: Record<ShaderType, string> = {
+export const COMPONENT_MAP: Record<string, string> = {
   mesh: "MeshGradient",
   liquid: "LiquidMetal",
   waves: "Waves",

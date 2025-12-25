@@ -10,7 +10,8 @@ import {
 } from "framer-motion";
 import { Check, Copy, Info, Pause, Play, RotateCcw } from "lucide-react";
 import type React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createParser, parseAsFloat, parseAsInteger, parseAsString, useQueryState } from "nuqs";
 
 import {
   BACKGROUND_PRESETS,
@@ -27,22 +28,49 @@ import {
   type PatternType,
 } from "./components";
 
+// Custom parser for layers array - uses JSON encoding
+const parseAsLayers = createParser<GradientLayer[]>({
+  parse: (value) => {
+    try {
+      const decoded = decodeURIComponent(value);
+      const parsed = JSON.parse(decoded);
+      if (Array.isArray(parsed)) {
+        return parsed as GradientLayer[];
+      }
+      return null;
+    } catch {
+      return null;
+    }
+  },
+  serialize: (value) => {
+    return encodeURIComponent(JSON.stringify(value));
+  },
+});
+
 export function AuroraBuilder() {
-  const [layers, setLayers] = useState<GradientLayer[]>(INITIAL_LAYERS);
-  const [bgStart, setBgStart] = useState(DEFAULT_BG_START);
-  const [bgEnd, setBgEnd] = useState(DEFAULT_BG_END);
-  const [bgAngle, setBgAngle] = useState(180);
+  // Layers - URL synced
+  const [layers, setLayers] = useQueryState("layers", parseAsLayers.withDefault(INITIAL_LAYERS));
   const [activeLayerId, setActiveLayerId] = useState<string | null>(
     INITIAL_LAYERS[0].id
   );
-  const [activePreset, setActivePreset] = useState<string>("aurora");
 
-  const [noiseOpacity, setNoiseOpacity] = useState(0.05);
-  const [activePattern, setActivePattern] = useState<PatternType>("none");
-  const [patternOpacity, setPatternOpacity] = useState(0.1);
-  const [patternColor, setPatternColor] = useState("#000000");
-  const [vignette, setVignette] = useState(0);
-  const [saturation, setSaturation] = useState(100);
+  // URL-synced state using nuqs
+  const [activePreset, setActivePreset] = useQueryState("preset", parseAsString.withDefault("aurora"));
+
+  // Base Gradient
+  const [bgStart, setBgStart] = useQueryState("bgStart", parseAsString.withDefault(DEFAULT_BG_START));
+  const [bgEnd, setBgEnd] = useQueryState("bgEnd", parseAsString.withDefault(DEFAULT_BG_END));
+  const [bgAngle, setBgAngle] = useQueryState("bgAngle", parseAsInteger.withDefault(180));
+
+  // Effects
+  const [noiseOpacity, setNoiseOpacity] = useQueryState("noise", parseAsFloat.withDefault(0.05));
+  const [vignette, setVignette] = useQueryState("vignette", parseAsFloat.withDefault(0));
+  const [saturation, setSaturation] = useQueryState("saturation", parseAsInteger.withDefault(100));
+
+  // Patterns
+  const [activePattern, setActivePattern] = useQueryState("pattern", parseAsString.withDefault("none"));
+  const [patternOpacity, setPatternOpacity] = useQueryState("patternOpacity", parseAsFloat.withDefault(0.1));
+  const [patternColor, setPatternColor] = useQueryState("patternColor", parseAsString.withDefault("#000000"));
 
   const [copied, setCopied] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
@@ -56,6 +84,13 @@ export function AuroraBuilder() {
 
   const smoothX = useSpring(mouseX, { stiffness: 50, damping: 20 });
   const smoothY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+
+  // Set active layer to first layer on mount
+  useEffect(() => {
+    if (layers.length > 0 && !activeLayerId) {
+      setActiveLayerId(layers[0].id);
+    }
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const { clientX, clientY } = e;

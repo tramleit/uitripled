@@ -3,7 +3,7 @@
 import { useSpring } from "framer-motion";
 import { LayerRenderer } from "./layer-renderer";
 import { getPatternCSS, getPatternSize } from "./pattern-utils";
-import type { GradientLayer, PatternType } from "./types";
+import type { GradientLayer } from "./types";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ZoomIn } from "lucide-react";
@@ -17,7 +17,7 @@ export interface PreviewCanvasProps {
   saturation: number;
   vignette: number;
   noiseOpacity: number;
-  activePattern: PatternType;
+  activePattern: string;
   patternOpacity: number;
   patternColor: string;
   isAnimating: boolean;

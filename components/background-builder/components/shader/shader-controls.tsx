@@ -16,61 +16,61 @@ import { useState } from "react";
 import { COLOR_PRESETS, COMPONENT_MAP, SHADER_INFO, ShaderType } from "./constants";
 
 export interface ShaderControlsProps {
-  activeShader: ShaderType;
-  setActiveShader: (v: ShaderType) => void;
+  activeShader: string;
+  setActiveShader: (v: string | null) => void;
   colors: string[];
   setColors: (v: string[]) => void;
-  activePreset: string;
-  setActivePreset: (v: string) => void;
+  activePreset: string | null;
+  setActivePreset: (v: string | null) => void;
   speed: number;
-  setSpeed: (v: number) => void;
+  setSpeed: (v: number | null) => void;
   scale: number;
-  setScale: (v: number) => void;
+  setScale: (v: number | null) => void;
   opacity: number;
-  setOpacity: (v: number) => void;
+  setOpacity: (v: number | null) => void;
   // Liquid
   liquidBg: string;
-  setLiquidBg: (v: string) => void;
+  setLiquidBg: (v: string | null) => void;
   liquidBlob: string;
-  setLiquidBlob: (v: string) => void;
+  setLiquidBlob: (v: string | null) => void;
   liquidDistortion: number;
-  setLiquidDistortion: (v: number) => void;
+  setLiquidDistortion: (v: number | null) => void;
   liquidSoftness: number;
-  setLiquidSoftness: (v: number) => void;
+  setLiquidSoftness: (v: number | null) => void;
   // Waves
   wavesBg: string;
-  setWavesBg: (v: string) => void;
+  setWavesBg: (v: string | null) => void;
   wavesColorFront: string;
-  setWavesColorFront: (v: string) => void;
+  setWavesColorFront: (v: string | null) => void;
   wavesShape: number;
-  setWavesShape: (v: number) => void;
+  setWavesShape: (v: number | null) => void;
   wavesFreq: number;
-  setWavesFreq: (v: number) => void;
+  setWavesFreq: (v: number | null) => void;
   wavesAmp: number;
-  setWavesAmp: (v: number) => void;
+  setWavesAmp: (v: number | null) => void;
   // Grain
   grainBg: string;
-  setGrainBg: (v: string) => void;
+  setGrainBg: (v: string | null) => void;
   grainShape: string;
-  setGrainShape: (v: string) => void;
+  setGrainShape: (v: string | null) => void;
   grainNoise: number;
-  setGrainNoise: (v: number) => void;
+  setGrainNoise: (v: number | null) => void;
   grainIntensity: number;
-  setGrainIntensity: (v: number) => void;
+  setGrainIntensity: (v: number | null) => void;
   // Neuro
   neuroBrightness: number;
-  setNeuroBrightness: (v: number) => void;
+  setNeuroBrightness: (v: number | null) => void;
   // Backgrounds
   metaballsBg: string;
-  setMetaballsBg: (v: string) => void;
+  setMetaballsBg: (v: string | null) => void;
   voronoiBg: string;
-  setVoronoiBg: (v: string) => void;
+  setVoronoiBg: (v: string | null) => void;
   godraysBg: string;
-  setGodraysBg: (v: string) => void;
+  setGodraysBg: (v: string | null) => void;
   swirlBg: string;
-  setSwirlBg: (v: string) => void;
+  setSwirlBg: (v: string | null) => void;
   spiralBg: string;
-  setSpiralBg: (v: string) => void;
+  setSpiralBg: (v: string | null) => void;
 }
 
 export function ShaderControls({
@@ -245,7 +245,7 @@ export function ShaderControls({
     const newColors = [...colors];
     newColors[index] = value;
     setColors(newColors);
-    setActivePreset(""); // Clear active preset when manually editing
+    setActivePreset(null); // Clear active preset when manually editing
   };
 
   const addColor = () => {
@@ -258,7 +258,7 @@ export function ShaderControls({
     if (colors.length > 2) {
       const newColors = colors.filter((_, i) => i !== index);
       setColors(newColors);
-      setActivePreset("");
+      setActivePreset(null);
     }
   };
 

@@ -12,10 +12,9 @@ import {
   Voronoi,
   Waves,
 } from "@paper-design/shaders-react";
-import { ShaderType } from "./constants";
 
 export interface ShaderRendererProps {
-  activeShader: ShaderType;
+  activeShader: string;
   opacity: number;
   colors: string[];
   speed: number;

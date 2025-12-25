@@ -27,23 +27,23 @@ interface GlobalSettingsPanelProps {
   bgStart: string;
   bgEnd: string;
   bgAngle: number;
-  onBgStartChange: (value: string) => void;
-  onBgEndChange: (value: string) => void;
-  onBgAngleChange: (value: number) => void;
+  onBgStartChange: (value: string | null) => void;
+  onBgEndChange: (value: string | null) => void;
+  onBgAngleChange: (value: number | null) => void;
 
   // Effects
   noiseOpacity: number;
   vignette: number;
   saturation: number;
-  activePattern: PatternType;
+  activePattern: string;
   patternOpacity: number;
   patternColor: string;
-  onNoiseOpacityChange: (value: number) => void;
-  onVignetteChange: (value: number) => void;
-  onSaturationChange: (value: number) => void;
-  onActivePatternChange: (value: PatternType) => void;
-  onPatternOpacityChange: (value: number) => void;
-  onPatternColorChange: (value: string) => void;
+  onNoiseOpacityChange: (value: number | null) => void;
+  onVignetteChange: (value: number | null) => void;
+  onSaturationChange: (value: number | null) => void;
+  onActivePatternChange: (value: string | null) => void;
+  onPatternOpacityChange: (value: number | null) => void;
+  onPatternColorChange: (value: string | null) => void;
 }
 
 export function GlobalSettingsPanel({

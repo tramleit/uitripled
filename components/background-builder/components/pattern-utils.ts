@@ -1,6 +1,4 @@
-import type { PatternType } from "./types";
-
-export function getPatternCSS(pattern: PatternType, color: string): string {
+export function getPatternCSS(pattern: string, color: string): string {
   switch (pattern) {
     case "grid":
       return `linear-gradient(${color} 1px, transparent 1px), linear-gradient(90deg, ${color} 1px, transparent 1px)`;
@@ -21,7 +19,7 @@ export function getPatternCSS(pattern: PatternType, color: string): string {
   }
 }
 
-export function getPatternSize(pattern: PatternType): string {
+export function getPatternSize(pattern: string): string {
   switch (pattern) {
     case "grid":
       return "40px 40px";
@@ -41,3 +39,4 @@ export function getPatternSize(pattern: PatternType): string {
       return "20px 20px";
   }
 }
+
